@@ -1,0 +1,82 @@
+{
+  "name": "dsh-skill-studio",
+  "version": "0.2.2",
+  "description": "Bilingual Skills Studio for DeepSeek Harness: inspect, create, edit, import, diagnose, update and recover complete skill bundles.",
+  "type": "module",
+  "license": "MIT",
+  "author": "IT咖啡馆 X 老陈聊AI",
+  "icon": "./assets/icon.svg",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "skills",
+    "skill-manager"
+  ],
+  "main": "lib/index.mjs",
+  "exports": {
+    ".": "./lib/index.mjs",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "engines": {
+    "node": ">=24.9.0",
+    "dsh": ">=0.2.1-rc.5 <0.2.2-0 || >=0.2.2-rc.1 <0.2.3-0"
+  },
+  "dsh": {
+    "title": {
+      "en": "Skills Studio",
+      "zh": "技能工作台"
+    },
+    "description": {
+      "en": "Manage complete skills with previews, diagnostics and recovery.",
+      "zh": "完整管理技能，导入先预览，修改可恢复。"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-api-gateway",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "lib",
+    "assets",
+    "locale",
+    "docs",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "prepack": "npm run build",
+    "market": "node scripts/generate-market.mjs"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/dsh-typert-protocol": "0.2.1-rc.5",
+    "fflate": "^0.8.2",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh": "0.2.2-rc.1",
+    "@deepseek-ai/dsh-client-store": "^0.2.1-rc.5",
+    "esbuild": "^0.28.2",
+    "immer": "^10.2.0",
+    "playwright": "^1.56.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-test-renderer": "18.3.1",
+    "zustand": "~4.5.7"
+  }
+}

@@ -1,0 +1,1482 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="description" content="Skills Studio 0.2.2 complete bilingual offline installation, publishing and verification guide by IT咖啡馆 X 老陈聊AI."><title>Skills Studio 0.2.2 · 使用与发布手册 / Offline guide</title>
+<style>
+:root{color-scheme:light;--bg:#f5f7fc;--paper:#fff;--text:#16233a;--muted:#647189;--faint:#8792a6;--line:#e2e8f2;--blue:#3369e8;--soft:#f0f5ff;--code:#101c30;--codeText:#e8efff;--shadow:0 18px 55px #1c37690a;--sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:104px}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.85 var(--sans);-webkit-font-smoothing:antialiased}[hidden]{display:none!important}a{color:var(--blue);text-decoration:none;text-underline-offset:3px}a:hover{text-decoration:underline}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #88b0ff;outline-offset:4px}::selection{background:#cadcff;color:#102550}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 95%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.top-inner{max-width:1496px;margin:auto;min-height:76px;padding:12px 36px;display:flex;justify-content:space-between;align-items:center;gap:24px}.brand{display:flex;gap:12px;align-items:center;color:var(--text);line-height:1.45}.brand:hover{text-decoration:none}.brand svg{width:42px;height:42px;flex:none}.brand-title{font-size:16px;font-weight:730;letter-spacing:-.3px}.brand-credit{font-size:11px;color:var(--muted);margin-top:2px;letter-spacing:.02em}.top-actions{display:flex;align-items:center;gap:12px}.language-switch{display:flex;border:1px solid var(--line);padding:3px;border-radius:10px;background:var(--bg)}.language-switch button{border:0;background:transparent;border-radius:7px;padding:6px 12px;font-size:12px;line-height:1.5;color:var(--muted)}.language-switch button[aria-pressed=true]{background:var(--paper);color:var(--blue);box-shadow:0 1px 5px #10234712;font-weight:650}.print-button{border:0;background:transparent;color:var(--muted);font-size:12px;padding:9px;white-space:nowrap}
+.shell{max-width:1496px;margin:auto;display:grid;grid-template-columns:254px minmax(0,1fr);gap:44px;padding:34px 36px 70px}.sidebar{position:sticky;top:106px;align-self:start;max-height:calc(100vh - 132px);overflow:auto;padding:4px 14px 25px 0;scrollbar-width:thin}.toc-title{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:0 0 15px 12px}.nav-group{margin-bottom:22px}.nav-group>p{font-size:11px;font-weight:680;color:var(--muted);margin:0 0 7px 12px}.nav-group>a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 12px;margin:3px 0;color:var(--muted);font-size:12px;border-radius:8px;line-height:1.65}.nav-group>a:hover{background:var(--paper);text-decoration:none;color:var(--text)}.nav-group>a[aria-current=location]{color:var(--blue);background:var(--soft);font-weight:650}.nav-dot{width:5px;height:5px;border-radius:100%;flex:none;background:transparent}.nav-group>a[aria-current=location] .nav-dot{background:var(--blue)}.sidebar-note{font-size:11px;line-height:1.85;color:var(--muted);border-top:1px solid var(--line);margin:0 12px;padding-top:20px}
+.main{min-width:0;max-width:1090px}.hero{padding:37px 42px 34px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(130deg,var(--paper) 36%,var(--soft));box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:260px;height:260px;right:-120px;top:-150px;border:1px solid #aac4ff66;border-radius:50%;box-shadow:0 0 0 32px #a8c3ff0a,0 0 0 64px #a8c3ff08;pointer-events:none}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:9px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue)}h1{font-size:clamp(27px,3.5vw,38px);letter-spacing:-1.1px;line-height:1.3;margin:17px 0 8px;font-weight:750}.hero-subtitle{font-size:17px;color:var(--text);font-weight:550;margin:0 0 11px}.hero-lead{font-size:13px;color:var(--muted);margin:0;max-width:690px;line-height:1.9}.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.hero-buttons a{font-size:12px;line-height:1.5;padding:10px 16px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--text);font-weight:600}.hero-buttons a:first-child{background:var(--blue);border-color:var(--blue);color:#fff}.hero-buttons a:hover{text-decoration:none;filter:brightness(.97)}.hero-meta{display:flex;gap:25px;flex-wrap:wrap;margin-top:29px;padding-top:22px;border-top:1px solid var(--line)}.hero-meta>div{display:flex;flex-direction:column;gap:4px}.hero-meta small{font-size:10px;line-height:1.5;color:var(--faint)}.hero-meta strong{font-size:11px;font-weight:620;line-height:1.6}.notice{margin:20px 0 25px;padding:16px 19px;display:flex;gap:13px;background:var(--soft);border:1px solid color-mix(in srgb,var(--blue) 18%,var(--line));border-radius:11px;font-size:12px;line-height:1.85;color:var(--muted)}.notice-mark{width:20px;height:20px;line-height:20px;text-align:center;border:1px solid color-mix(in srgb,var(--blue) 35%,var(--line));border-radius:50%;color:var(--blue);font-weight:700;flex:none;margin-top:2px}.notice strong{color:var(--text);display:block;margin-bottom:2px;font-size:12px}
+.intro-copy{font-size:13px;color:var(--muted);padding:0 4px 7px}.doc-section{background:var(--paper);border:1px solid var(--line);border-radius:15px;margin:22px 0;padding:27px 32px 30px;box-shadow:0 3px 20px #223b6503;scroll-margin-top:98px;overflow:hidden}.doc-section h2{font-size:21px;line-height:1.5;letter-spacing:-.45px;font-weight:710;margin:0 0 19px;padding-bottom:16px;border-bottom:1px solid var(--line)}.doc-section h3{font-size:16px;line-height:1.65;margin:29px 0 13px;font-weight:680;letter-spacing:-.15px}.doc-section h4{font-size:14px;margin:24px 0 12px}.doc-section p{margin:13px 0;font-size:13px;line-height:1.95}.doc-section ul,.doc-section ol{margin:13px 0;padding-left:24px;font-size:13px}.doc-section li{padding-left:3px;margin:6px 0;line-height:1.9}.doc-section strong{font-weight:675}.doc-section p:first-child{margin-top:0}.doc-section>:last-child{margin-bottom:0}.doc-section blockquote{margin:20px 0;padding:1px 18px;border-left:3px solid var(--blue);background:var(--soft);color:var(--muted)}code{font-family:var(--mono);font-size:.91em;border:1px solid var(--line);background:var(--bg);border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}pre{background:var(--code);color:var(--codeText);padding:18px 20px;border-radius:10px;overflow:auto;line-height:1.8;font-size:12px;tab-size:2;margin:18px 0;scrollbar-width:thin}pre code{border:0;background:transparent;color:inherit;padding:0;border-radius:0;overflow-wrap:normal;font-size:inherit}.code-frame{margin:18px 0;border:1px solid #253651;border-radius:10px;overflow:hidden;background:var(--code)}.code-bar{display:flex;justify-content:space-between;align-items:center;background:#18263c;padding:7px 11px 7px 18px;border-bottom:1px solid #ffffff0d;color:#9dadc8;font:10px/1.5 var(--mono);letter-spacing:.03em}.code-copy{font:10px/1.5 var(--sans);color:#b3c7eb;background:transparent;border:1px solid #ffffff1d;border-radius:5px;padding:3px 9px}.code-copy:hover{background:#ffffff0c}.code-frame pre{margin:0;border:0;border-radius:0}.table-wrap{overflow:auto;margin:20px 0;border:1px solid var(--line);border-radius:9px;scrollbar-width:thin}table{border-collapse:collapse;width:100%;font-size:12px;line-height:1.8;text-align:left}th{background:var(--bg);font-size:11px;font-weight:670;color:var(--muted);white-space:nowrap}th,td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}td:first-child{font-weight:530}table code{font-size:10px}td pre{max-width:100%;font-size:10px}.article-footer{display:flex;align-items:flex-start;gap:25px;justify-content:space-between;padding:17px 3px;font-size:10px;color:var(--faint);line-height:1.8}.article-footer p{margin:0;max-width:700px}.article-footer a{white-space:nowrap;font-size:11px}.no-script{padding:20px;margin:20px;border:1px solid var(--line);background:var(--paper)}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0d1421;--paper:#141f30;--text:#dde6f5;--muted:#9aacc7;--faint:#7488a6;--line:#28364c;--blue:#80a9ff;--soft:#1b2b47;--code:#0a1120;--codeText:#dce8ff;--shadow:none}.hero-buttons a:first-child{color:#102344}.notice-mark{color:var(--blue)}.brand svg{opacity:.9}}
+@media(min-width:1600px){.shell{gap:56px}}
+@media(max-width:1000px){.shell{grid-template-columns:208px minmax(0,1fr);gap:22px;padding:24px 24px 55px}.top-inner{padding:12px 24px}.hero{padding:29px}.doc-section{padding:24px}.sidebar{padding-right:4px}.hero-meta{gap:18px}}
+@media(max-width:760px){.top-inner{padding:11px 16px;min-height:70px;gap:10px}.brand svg{width:35px;height:35px}.brand-title{font-size:14px}.brand-credit{font-size:9px}.top-actions{gap:3px}.print-button{display:none}.language-switch button{font-size:11px;padding:5px 9px}.shell{display:block;padding:20px 14px 35px}.sidebar{position:relative;top:auto;max-height:none;padding:0;margin-bottom:20px;border:1px solid var(--line);border-radius:12px;background:var(--paper);overflow:hidden}.toc-title{padding:14px 15px 0;margin:0;font-size:10px}.nav-language{display:flex;flex-wrap:wrap;padding:9px 10px 12px;gap:7px}.nav-group{display:contents}.nav-group>p{display:none}.nav-group>a{font-size:10px;padding:5px 8px;margin:0;background:var(--bg)}.nav-dot,.sidebar-note{display:none}.hero{padding:25px 23px;border-radius:14px}h1{font-size:28px;letter-spacing:-.7px}.hero-subtitle{font-size:16px}.hero-lead{font-size:12px}.hero-meta{gap:18px}.hero-meta strong{font-size:10px}.hero-meta>div:first-child{width:100%}.doc-section{padding:22px 20px;border-radius:12px;margin:17px 0}.doc-section h2{font-size:18px}.doc-section h3{font-size:15px}.doc-section p,.doc-section li{font-size:12px}.doc-section ul,.doc-section ol{padding-left:20px}th,td{padding:9px 11px;font-size:11px}pre{padding:16px;font-size:10px}.notice{font-size:11px;padding:14px}.article-footer{display:block}.article-footer a{display:inline-block;margin-top:14px}}
+@media print{html{scroll-behavior:auto}body{background:#fff;color:#111;font-size:11px}.topbar,.sidebar,.hero-buttons,.notice,.print-button,.code-copy,.article-footer a{display:none!important}.shell{display:block;padding:0;max-width:none}.main{max-width:none}.hero{background:#fff;box-shadow:none;padding:10px 0 18px;border:0}.hero:after{display:none}h1{font-size:28px}.hero-meta{margin-top:14px;padding-top:12px}.doc-section{box-shadow:none;border:0;border-radius:0;padding:14px 0;margin:15px 0;overflow:visible}.doc-section h2{break-after:avoid}.doc-section h3{break-after:avoid}.doc-section p,.doc-section li{font-size:11px}pre,.code-frame{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f6f8;color:#111;border-color:#ddd;break-inside:avoid}.code-bar{background:#eee;color:#333;border-color:#ddd}.table-wrap{overflow:visible;border-color:#ddd}th{background:#eee;color:#333}th,td{border-color:#ddd;font-size:10px}table{break-inside:auto}tr{break-inside:avoid}a{color:#244f8d}.intro-copy{padding:0}.article-footer{border-top:1px solid #ddd;margin-top:20px;color:#444}}
+</style>
+</head><body id="top" data-active-lang="zh">
+<header class="topbar"><div class="top-inner"><a href="#top" class="brand"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#edf4ff"/><g stroke="#3b6cf4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M21 14h19l9 9v27H21z"/><path d="M40 14v10h9M28 32h13M28 39h10M15 20v28a8 8 0 0 0 8 8h20"/></g></svg>
+<div><div class="brand-title">Skills Studio <span style="font-weight:450;color:var(--faint);font-size:11px">0.2.2</span></div><div class="brand-credit">IT咖啡馆 X 老陈聊AI</div></div></a><div class="top-actions"><div class="language-switch" role="group" aria-label="Language / 语言"><button type="button" data-set-lang="zh" aria-pressed="true">简体中文</button><button type="button" data-set-lang="en" aria-pressed="false">English</button></div><button class="print-button" type="button" id="print-guide"><span class="localized " data-ui-lang="zh">打印 / 保存 PDF</span><span class="localized " data-ui-lang="en" hidden>Print / Save PDF</span></button></div></div></header>
+<div class="shell"><aside class="sidebar"><p class="toc-title"><span class="localized " data-ui-lang="zh">本页目录</span><span class="localized " data-ui-lang="en" hidden>On this page</span></p><nav class="nav-language" data-nav-lang="zh" aria-label="手册导航"><div class="nav-group"><p>安装与日常使用</p><a href="#zh-host" data-nav-key="host"><span>确认 DSH 环境</span><span class="nav-dot"></span></a><a href="#zh-install" data-nav-key="install"><span>开始安装</span><span class="nav-dot"></span></a><a href="#zh-use" data-nav-key="use"><span>首次使用与状态</span><span class="nav-dot"></span></a><a href="#zh-upgrade" data-nav-key="upgrade"><span>升级、回退与卸载</span><span class="nav-dot"></span></a></div><div class="nav-group"><p>公开分发</p><a href="#zh-publish" data-nav-key="publish"><span>发布给网友</span><span class="nav-dot"></span></a><a href="#zh-market" data-nav-key="market"><span>自建插件索引</span><span class="nav-dot"></span></a><a href="#zh-community" data-nav-key="community"><span>社区发现</span><span class="nav-dot"></span></a></div><div class="nav-group"><p>支持与验证</p><a href="#zh-troubleshoot" data-nav-key="troubleshoot"><span>排错</span><span class="nav-dot"></span></a><a href="#zh-references" data-nav-key="references"><span>官方依据</span><span class="nav-dot"></span></a><a href="#zh-changes" data-nav-key="changes"><span>0.2.2 版本变更</span><span class="nav-dot"></span></a><a href="#zh-verification" data-nav-key="verification"><span>最终验证记录</span><span class="nav-dot"></span></a><a href="#zh-rc5" data-nav-key="rc5"><span>rc.5 兼容性复核</span><span class="nav-dot"></span></a></div></nav><nav class="nav-language" data-nav-lang="en" aria-label="Guide navigation" hidden><div class="nav-group"><p>Install & use</p><a href="#en-host" data-nav-key="host"><span>Identify your DSH host</span><span class="nav-dot"></span></a><a href="#en-install" data-nav-key="install"><span>Install the plugin</span><span class="nav-dot"></span></a><a href="#en-use" data-nav-key="use"><span>First use & state</span><span class="nav-dot"></span></a><a href="#en-upgrade" data-nav-key="upgrade"><span>Update, rollback & uninstall</span><span class="nav-dot"></span></a></div><div class="nav-group"><p>Distribute</p><a href="#en-publish" data-nav-key="publish"><span>Publish for others</span><span class="nav-dot"></span></a><a href="#en-market" data-nav-key="market"><span>Publish a plugin index</span><span class="nav-dot"></span></a><a href="#en-community" data-nav-key="community"><span>Community discovery</span><span class="nav-dot"></span></a></div><div class="nav-group"><p>Support & verification</p><a href="#en-troubleshoot" data-nav-key="troubleshoot"><span>Troubleshooting</span><span class="nav-dot"></span></a><a href="#en-references" data-nav-key="references"><span>Official references</span><span class="nav-dot"></span></a><a href="#en-changes" data-nav-key="changes"><span>What changed in 0.2.2</span><span class="nav-dot"></span></a><a href="#en-verification" data-nav-key="verification"><span>Final verification record</span><span class="nav-dot"></span></a><a href="#en-rc5" data-nav-key="rc5"><span>rc.5 compatibility check</span><span class="nav-dot"></span></a></div></nav><p class="sidebar-note"><span class="localized " data-ui-lang="zh">当前模式显示实际可调用的技能；技能库管理全部文件。对照聊天的 / 菜单时，选择相同工作区、模式并筛选手动调用。</span><span class="localized " data-ui-lang="en" hidden>Current mode shows callable skills; Skill library manages saved files. To compare with a chat slash menu, use the same workspace and mode and the manual-invocation filter.</span></p></aside><main class="main">
+<section class="hero" aria-labelledby="guide-title"><div class="eyebrow"><span class="localized " data-ui-lang="zh">离线手册</span><span class="localized " data-ui-lang="en" hidden>Offline handbook</span> · VERSION 0.2.2</div><h1 id="guide-title">Skills Studio</h1><p class="hero-subtitle"><span class="localized " data-ui-lang="zh">使用与发布手册</span><span class="localized " data-ui-lang="en" hidden>User & publishing guide</span></p><p class="hero-lead"><span class="localized " data-ui-lang="zh">从本地安装到公开分发，一份离线可读的完整指南。</span><span class="localized " data-ui-lang="en" hidden>A complete offline guide, from a local installation to public distribution.</span></p><div class="hero-buttons"><a href="#zh-install" data-jump="install"><span class="localized " data-ui-lang="zh">开始安装</span><span class="localized " data-ui-lang="en" hidden>Install the plugin</span> <span aria-hidden="true">→</span></a><a href="#zh-publish" data-jump="publish"><span class="localized " data-ui-lang="zh">发布给网友</span><span class="localized " data-ui-lang="en" hidden>Publish for others</span></a></div><div class="hero-meta"><div><small><span class="localized " data-ui-lang="zh">安装文件</span><span class="localized " data-ui-lang="en" hidden>Installable archive</span></small><strong><code>dsh-skill-studio-0.2.2.tgz</code></strong></div><div><small><span class="localized " data-ui-lang="zh">兼容目标</span><span class="localized " data-ui-lang="en" hidden>Compatibility targets</span></small><strong>DSH 0.2.1-rc.5 / 0.2.2-rc.1</strong></div><div><small><span class="localized " data-ui-lang="zh">主测试通过</span><span class="localized " data-ui-lang="en" hidden>Main tests passed</span></small><strong>116 <span style="color:var(--faint);font-weight:450"><span class="localized " data-ui-lang="zh">项通过 · 1 项条件跳过</span><span class="localized " data-ui-lang="en" hidden>passed · 1 conditional skip</span> · Linux</span></strong></div><div><small><span class="localized " data-ui-lang="zh">离线手册</span><span class="localized " data-ui-lang="en" hidden>Offline handbook</span></small><strong><span class="localized " data-ui-lang="zh">更新于 2026-11-05</span><span class="localized " data-ui-lang="en" hidden>Updated 2026-11-05</span></strong></div></div></section>
+<div class="notice"><span class="notice-mark" aria-hidden="true">i</span><div><strong><span class="localized " data-ui-lang="zh">当前交付</span><span class="localized " data-ui-lang="en" hidden>Delivery status</span></strong><span class="localized " data-ui-lang="zh">本地安装包可用；npm / GitHub Release / Pages 索引地址仍是发布示例，需实际发布后才能分享给网友。</span><span class="localized " data-ui-lang="en" hidden>The local package is installable. npm, GitHub Release, and Pages index addresses are publication examples until they are actually published.</span></div></div>
+<noscript><div class="no-script">JavaScript 已停用；两种语言的完整手册都显示在下面。JavaScript is disabled; both complete language versions appear below.</div><style>.language-content[hidden],.nav-language[hidden]{display:block!important}.language-switch{display:none!important}</style></noscript>
+<article class="language-content" data-content-lang="zh" lang="zh-CN">
+  <div class="intro-copy"><p>本文对应插件 <strong><code>dsh-skill-studio@0.2.2</code></strong>，显示名称为 <strong>技能工作台 / Skills Studio</strong>，由 <strong>IT咖啡馆 X 老陈聊AI</strong> 共同打造。包和公开地址是两回事：交付的本地 <code>.tgz</code> 可以直接安装；npm 包和 GitHub 仓库只有实际发布后才能用于网友安装。<a href="#zh-changes">变更记录</a>列出 0.2.2 的主要调整。</p>
+</div>
+  <section class="doc-section" id="zh-host" data-key="host"><h2 id="zh-host-1-确认你用的-dsh">1. 确认你用的 DSH</h2>
+<ul>
+<li><strong>Desktop 桌面应用：</strong> 在应用内查看版本，并使用应用内的插件安装器。</li>
+<li><strong>Web：</strong> 在启动 DSH 的终端运行 <code>dsh --version</code>，确认正在使用的 profile，下面示例使用 <code>web</code>。</li>
+<li><strong>远程 Web：</strong> 本地路径指运行 DSH 服务器那台机器上的路径。电脑浏览器能看到某文件，不代表远程 DSH 服务器也能读到它。</li>
+</ul>
+<p>兼容目标为 <strong>0.2.1-rc.5</strong> 和 <strong>0.2.2-rc.1</strong>。请以<a href="#zh-verification">验证记录</a>标明的插件版本与实测环境为准，旧版结果不自动成为 0.2.2 的结论。Windows/macOS 尚未真机验证；当前执行环境的真实 GitHub API 下载返回 HTTP 403。核验时 npm <code>latest</code> 标签是 0.2.1-rc.5，0.2.2-rc.1 已可按精确版本获取；不能用 dist-tag 或仓库页面版本代替本机版本。</p>
+<p>全新安装 Web 时，可选择固定版本运行时；已有可用 DSH 的用户无需先重新安装：</p>
+<pre><code class="language-sh">npm install -g @deepseek-ai/dsh@0.2.1-rc.5
+</code></pre>
+<p>本次源码基线要求 Node.js <strong>24.9.0 或更新版本</strong>。Web 的 <code>dsh plugin</code> 会转发给 PATH 上的 pnpm。若提示找不到 pnpm，先按你现有的 Node 管理方式安装它；当前源码使用的版本为：</p>
+<pre><code class="language-sh">npm install -g pnpm@11.28.5
+</code></pre>
+<p>这些全局安装命令只用于缺少对应工具的机器。Desktop 使用自身打包的运行时和安装器，通常不需要准备这些命令行工具。</p>
+</section>
+<section class="doc-section" id="zh-install" data-key="install"><h2 id="zh-install-2-安装交付包">2. 安装交付包</h2>
+<p>解压交付 ZIP，找到 <code>dsh-skill-studio-0.2.2.tgz</code>。不要把外层源码 ZIP 当成插件包。</p>
+<h3 id="zh-install-desktop-windows-macos-linux">Desktop：Windows、macOS、Linux</h3>
+<ol>
+<li>把 <code>.tgz</code> 放到本机固定目录。</li>
+<li>打开 DSH「插件」，在「更多」中选择「安装第三方插件」。不同发行版可能把入口放在「添加插件」中。</li>
+<li>在包名或地址中输入该文件的<strong>绝对路径</strong>，不要在输入框里附加 <code>dsh plugin ...</code>。</li>
+<li>安装后点击「立即启用」；若关闭了安装窗口，在已安装列表中启用 Skills Studio。</li>
+<li>按宿主提示完成重载或重启，再打开技能工作台。</li>
+</ol>
+<p>输入框示例：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>系统</th>
+<th>示例路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td><code>C:\Users\YOUR_NAME\Downloads\dsh-skill-studio-0.2.2.tgz</code></td>
+</tr>
+<tr>
+<td>macOS</td>
+<td><code>/Users/YOUR_NAME/Downloads/dsh-skill-studio-0.2.2.tgz</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><code>/home/YOUR_NAME/Downloads/dsh-skill-studio-0.2.2.tgz</code></td>
+</tr>
+</tbody></table></div>
+<p>替换为实际用户名和文件路径。普通 npm CLI 会拒绝管理 <code>desktop</code> profile；不要用 <code>dsh plugin --profile desktop ...</code> 代替桌面安装器。</p>
+<h3 id="zh-install-web-windows-powershell">Web：Windows PowerShell</h3>
+<p>在包所在目录打开 PowerShell：</p>
+<pre><code class="language-powershell">dsh --version
+dsh plugin --profile web add &quot;.\dsh-skill-studio-0.2.2.tgz&quot;
+</code></pre>
+<p>或使用完整路径，路径中有空格时保留引号：</p>
+<pre><code class="language-powershell">dsh plugin --profile web add &quot;C:\DSH Plugins\dsh-skill-studio-0.2.2.tgz&quot;
+</code></pre>
+<h3 id="zh-install-web-macos-linux-wsl">Web：macOS / Linux / WSL</h3>
+<pre><code class="language-sh">dsh --version
+dsh plugin --profile web add ./dsh-skill-studio-0.2.2.tgz
+</code></pre>
+<p>WSL 中运行的 DSH 使用 WSL 的用户目录和文件路径。Windows 盘上的包可按实际挂载点使用，例如 <code>/mnt/c/Users/YOUR_NAME/Downloads/dsh-skill-studio-0.2.2.tgz</code>。</p>
+<h3 id="zh-install-未全局安装-dsh-命令">未全局安装 dsh 命令</h3>
+<p>用与你现有环境一致的运行时版本代替命令入口，例如：</p>
+<pre><code class="language-sh">npx @deepseek-ai/dsh@0.2.1-rc.5 plugin --profile web add ./dsh-skill-studio-0.2.2.tgz
+</code></pre>
+<p>仍需保证 pnpm 能由该运行时找到。自定义 profile 把 <code>web</code> 替换为实际名字；<code>--profile</code> 必须放在 <code>add</code> 前面。</p>
+<h3 id="zh-install-生效和检查">生效和检查</h3>
+<p>以宿主返回的安装结果为准处理启用、重载和重启。需要重启 Web 时，先结束现有 DSH 进程，再从原工作目录启动：</p>
+<pre><code class="language-sh">dsh web
+</code></pre>
+<p>检查以下结果：</p>
+<ol>
+<li>已安装列表出现 <code>dsh-skill-studio</code>，版本为 <code>0.2.2</code>，且已启用。</li>
+<li>能打开技能工作台，列表没有一直停在加载状态。</li>
+<li>默认进入「当前模式」，只显示该工作区、模式实际可调用的技能；切到「技能库」可查看完整技能清单。选中技能后在内容区查看「概览」。在 DSH「设置 → 常规」切换中文/English，文案跟随变化。</li>
+<li>确认顶部「工作区」「模式」，创建一个测试技能，检查写入位置；分别保存调用设置、正文，确认已保存。</li>
+<li>重新打开 <code>/</code> 菜单查看新列表。已读进旧会话的正文不会因为文件修改、停用或菜单刷新而从历史中消失。</li>
+</ol>
+</section>
+<section class="doc-section" id="zh-use" data-key="use"><h2 id="zh-use-3-第一次使用">3. 第一次使用</h2>
+<p>先确认顶部的「工作区」「模式」。默认使用当前会话的工作区和模式，也可选择其他已知工作区。左侧显示具体工作区名称，避免把另一个工作区仍称为“当前工作区”。没有会话时，也能管理个人技能。</p>
+<p><strong>工作台中的选择只改变查看和管理范围，不会改变当前会话的工作区或模式。</strong> 内置模式使用 DSH 的标准名称：标准模式、PTC 模式、极简模式、创造模式；自己创建的模式保留原名称。</p>
+<h3 id="zh-use-当前模式与技能库">当前模式与技能库</h3>
+<p>打开工作台默认进入「当前模式」，只显示所选工作区、模式下实际可调用的技能。切换到「技能库」可管理全部已扫描的本地技能，并查看当前模式由插件提供的只读项。本地项包括已停用、当前模式不提供、被同名副本覆盖和两种调用都关闭的技能。技能库中的文件开关（「文件已启用 / 文件已停用」）不代表该模式能用；它会影响读取同一文件的模式或 Agent。</p>
+<p>DSH 默认极简模式不提供本地技能，但仍可由插件提供技能。标准模式和 PTC 模式通常提供本地技能。模式配置可以改变，因此以实际目录为准，不能把截图中的 8 个当成固定数量。</p>
+<p>点击「当前模式可用」「模型自动使用」「/ 手动调用」统计即可筛选对应清单，自动与手动分别统计。要核对聊天输入框的 <code>/</code> 菜单，请先让顶部工作区和模式与该会话一致，再筛选「/ 手动调用」。仅允许模型自动使用的技能不应出现在这份手动清单中；两种调用都关闭的技能不计为可用。</p>
+<p>若目录不完整或暂时无法确认，界面会说明无法确认，而不是显示一个确定的“0 个可用”。插件自带的只读技能显示提供方信息，不显示蓝色文件开关。</p>
+<p>选择技能先看「概览」，修改正文时再进入「编辑」。新建或导入成功后自动切到「技能库」，方便找到刚添加的技能；当前模式能否调用仍以模式清单为准。</p>
+<p>新建或复制时，在「保存到」选择位置；导入时，在「导入到」选择使用范围：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>使用范围</th>
+<th>适合什么情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>某个工作区</td>
+<td>只想让这个工作区使用，例如项目规范或专用流程；界面显示具体工作区名称。</td>
+</tr>
+<tr>
+<td>个人技能</td>
+<td>供本机多个工作区共用的文件；具体模式能否调用仍看「当前模式」。DSH 专用与其他 Agent 共用的位置会分别说明。</td>
+</tr>
+<tr>
+<td>插件自带技能</td>
+<td>随插件提供，只读查看；需要修改时先复制到可写位置。</td>
+</tr>
+</tbody></table></div>
+<p>需要查看真实文件夹时，点「保存位置」的提示图标，可以查看和复制路径。路径用于定位文件，不需要记住它才能使用工作台。</p>
+<h3 id="zh-use-目录参考">目录参考</h3>
+<p>以下供需要手动定位文件的用户参考；实际路径以「保存位置」为准。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>来源</th>
+<th>默认路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作区 DSH 技能</td>
+<td><code>&lt;projectRoot&gt;/.dsh/skills</code></td>
+</tr>
+<tr>
+<td>工作区共享技能</td>
+<td><code>&lt;projectRoot&gt;/.agents/skills</code></td>
+</tr>
+<tr>
+<td>自定义位置</td>
+<td>DSH 配置中的目录</td>
+</tr>
+<tr>
+<td>个人 DSH 技能</td>
+<td><code>$DSH_HOME/skills</code>，默认 <code>~/.dsh/skills</code></td>
+</tr>
+<tr>
+<td>个人共享技能</td>
+<td><code>$DSH_AGENTS_HOME/skills</code>，默认 <code>~/.agents/skills</code></td>
+</tr>
+<tr>
+<td>插件自带技能</td>
+<td>由对应插件提供</td>
+</tr>
+</tbody></table></div>
+<p>同名技能可能来自不同位置，详情会显示当前实际使用的版本。<code>projectRoot</code> 通常是离工作目录最近的 <code>.git</code> 祖先；没有时使用工作目录。Windows 的 <code>~</code> 指运行 DSH 的用户主目录。自定义环境变量会改变实际位置；远程 DSH 的路径属于服务器。</p>
+<p>技能必须有合法 YAML frontmatter：</p>
+<pre><code class="language-markdown">---
+name: article-review
+description: Review a Chinese technology article for clarity and unsupported claims.
+---
+
+Read the article, identify unsupported claims, and suggest concrete revisions.
+</code></pre>
+<p>名称使用小写英文、数字和连字符；描述必填。目录可以包含配套资源，分发时应导出整个技能包。中文目录名与合法英文 <code>name</code> 可以并存。</p>
+<p>「允许模型自动选用」对应 <code>disable-model-invocation</code> 的反向含义，「允许 /手动调用」对应 <code>user-invocable</code>。两个设置互相独立；在概览中点「保存设置」单独保存，保留原正文、注释和其他元数据。完整指令仍在「编辑」页签保存。查看状态时应同时核对调用设置、整体文件启停和所选模式下的实际可用性。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>状态层次</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>技能库中的文件开关</td>
+<td>指令文件是否处于可发现的文件名状态，不表示当前模式实际提供它。</td>
+</tr>
+<tr>
+<td>当前模式可调用</td>
+<td>宿主实际提供该技能，且至少允许一种调用；模型自动使用和 <code>/</code> 手动调用各自统计。出现在列表中不表示模型已读过全文。</td>
+</tr>
+<tr>
+<td>会话已读内容</td>
+<td>曾注入聊天的技能正文；工作台不修改这段历史，也不能仅凭目录结果断言当前模型上下文仍保留全文。</td>
+</tr>
+</tbody></table></div>
+<p><strong>共享目录的启停会影响其他 Agent。</strong> 整体停用会重命名指令文件，例如 <code>SKILL.md</code> 变为 <code>SKILL.md.disabled</code>。在 <code>~/.agents/skills</code> 这类共享根操作，其他读取该目录的 Agent 也会受到影响；DSH 专用副本可放在 <code>.dsh/skills</code>。</p>
+<h3 id="zh-use-常用操作">常用操作</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>目的</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>新建</td>
+<td>点「新建技能」，在「保存到」选择使用范围，填写合法名称、描述和起步模板。</td>
+</tr>
+<tr>
+<td>修改调用设置</td>
+<td>打开本地技能「概览」，分别切换「允许模型自动选用」「允许 /手动调用」，点「保存设置」；看到「已保存」即可，更多同步信息点提示图标查看。</td>
+</tr>
+<tr>
+<td>修改指令</td>
+<td>打开技能，在「编辑」中修改完整正文，点「保存修改」。</td>
+</tr>
+<tr>
+<td>修改配套文件</td>
+<td>在「资源文件」选择文本文件编辑，点「保存资源」；也可填写相对路径「新增文本资源」、上传资源或移除资源。二进制文件保留在包内，可导出后查看。</td>
+</tr>
+<tr>
+<td>导入本地包</td>
+<td>「导入技能 → 本地文件」，选择 <code>.md</code>、<code>.zip</code> 或完整文件夹，在「导入到」选择位置，点「下一步」，查看技能后点「导入」。</td>
+</tr>
+<tr>
+<td>从 GitHub 导入</td>
+<td>「导入技能 → GitHub」，粘贴具体技能文件夹的 <code>/tree/</code> URL 或 Markdown 文件的 <code>/blob/</code> URL（支持 <code>SKILL.md</code> 与平铺 <code>.md</code>）。点「下一步」查看技能，再点「导入」；有同名技能时会显示具体提醒。</td>
+</tr>
+<tr>
+<td>更新 GitHub 来源</td>
+<td>已导入技能的「概览 → 来源 → 检查来源更新」，对照已安装/新提交、本地/新正文和资源变更，检查本地修改提示，再点「应用已检查的更新」。</td>
+</tr>
+<tr>
+<td>复制到另一根</td>
+<td>打开本地技能，点「复制到其他位置」，选择可写位置；保留原技能和资源。</td>
+</tr>
+<tr>
+<td>批量维护</td>
+<td>在「技能库」勾选本地技能，执行文件启用、停用或导出所选。切换范围后，隐藏选择不会被用于批量修改。</td>
+</tr>
+<tr>
+<td>删除与恢复</td>
+<td>「移除技能」会留恢复点；在「变更历史」选对应快照恢复。恢复前也保存当前状态。</td>
+</tr>
+</tbody></table></div>
+<p>GitHub 仓库如果包含很多技能，请粘贴<strong>具体技能目录</strong>的网址；当前版本不提供整仓多技能选择器。仓库根本身是一个技能时也支持仓库根 URL。单次获取限制为 200 个文件、单文件 2 MiB、总文件内容 8 MiB。公共 API 限流或网络不可达时会给出错误，稍后重试；不会通过执行第三方下载脚本绕过。</p>
+<p>对于插件或运行时提供的虚拟技能，工作台仅供查看合成指令，不提供其原始资源的完整导出；请通过原提供方管理。对于本地完整包，更新会处理其全部资源，并用整个 bundle 的哈希检查并发修改。GitHub 更新是主动操作，工作台不会后台自动覆盖你导入的内容。</p>
+<h3 id="zh-use-保存结果与技能菜单">保存结果与技能菜单</h3>
+<p>相关 SDK 的客户端技能目录按会话缓存。旧版会出现文件写入成功、宿主已发现新状态，但已打开的 <code>/</code> 菜单仍显示旧结果的问题；这不表示指令文件没有保存。</p>
+<p>0.2.2 的成功提示只显示「已保存」等简短结果；目录和菜单的同步信息可点击提示图标查看。<strong>当前打开的技能菜单组会先关闭，重新打开 <code>/</code> 时获取新列表。</strong> 若菜单仍旧，先确认工作台所选工作区和模式与会话相同，再查看同步详情。“已保存”只说明文件已保存，不等于每种模式都支持该技能。
+其他窗口在已加载插件、连接正常且可见时，约每 5 秒检查宿主的变更版本，发现变化后刷新各自菜单与工作台列表；隐藏窗口恢复可见时也会检查。它不是对离线或隐藏窗口的 5 秒送达承诺。刷新不重启 Agent、不回写聊天，也不删除会话已经读入的正文。</p>
+</section>
+<section class="doc-section" id="zh-upgrade" data-key="upgrade"><h2 id="zh-upgrade-4-升级-回退和卸载">4. 升级、回退和卸载</h2>
+<p>从旧版升级到 0.2.2，在原 profile 安装新 <code>.tgz</code>。操作前可导出重要技能；更新插件不等于更新已导入的第三方技能。</p>
+<pre><code class="language-sh">dsh plugin --profile web add ./dsh-skill-studio-0.2.2.tgz
+</code></pre>
+<p>PowerShell 使用 <code>dsh plugin --profile web add &quot;.\dsh-skill-studio-0.2.2.tgz&quot;</code>。Desktop 在原应用的安装器中输入新包绝对路径，按宿主提示启用与重载。</p>
+<p>技能仍保存在原技能根；工作台历史目录仍是 <code>$DSH_HOME/skill-studio</code>，默认 <code>~/.dsh/skill-studio</code>，本次不迁移、不清空。插件卸载也不会自动清理这些技能文件和历史。若配置了自定义 <code>dshHome</code>，历史仍保存在对应位置。</p>
+<p>保留旧的 <code>dsh-skill-studio-0.2.1.tgz</code> 和原交付 ZIP，0.2.2 另存为新文件。需要回退时，在同一 profile 安装旧包：</p>
+<pre><code class="language-sh">dsh plugin --profile web add ./dsh-skill-studio-0.2.1.tgz
+</code></pre>
+<p>Desktop 同样在安装器选择旧包。更早的 0.1 包也可自行保留。回退插件不会撤销使用新版期间对技能文件的修改；需要恢复技能时使用变更历史或此前导出的完整包。不要通过删除历史目录完成回退。</p>
+<p>Web 卸载：</p>
+<pre><code class="language-sh">dsh plugin --profile web remove dsh-skill-studio
+</code></pre>
+<p>Desktop 在已安装插件列表中卸载。跨机器迁移请导出完整技能包，不能只复制某个插件设置文件。若希望另外删除技能或历史，应在确认真实路径与备份后独立处理。</p>
+</section>
+<section class="doc-section" id="zh-publish" data-key="publish"><h2 id="zh-publish-5-把插件发布给网友">5. 把插件发布给网友</h2>
+<h3 id="zh-publish-先发布包-再公布命令">先发布包，再公布命令</h3>
+<p>下面所有 <code>YOUR_GITHUB_USER</code> 都是占位符。未完成发布前，不要把相应 npm 包名和 URL 写成“点击即可安装”。</p>
+<p>在插件源码根目录检查：</p>
+<pre><code class="language-sh">npm install
+npm run build
+npm test
+npm pack --dry-run
+npm pack
+</code></pre>
+<p>确认生成 <code>dsh-skill-studio-0.2.2.tgz</code>，其中包含 manifest、bundle patch、宿主代码、浏览器产物、语言资源和必要文档。在干净 DSH profile 中安装该 <code>.tgz</code> 并启动，确认它实际可加载。</p>
+<h3 id="zh-publish-npm-发布">npm 发布</h3>
+<p>你需要一个有该包名发布权限的 npm 账号。<code>dsh-skill-studio</code> 如已被占用，先改成你拥有的名称，例如 <code>@YOUR_NPM_SCOPE/dsh-skill-studio</code>；同时更新 manifest、patch 中的模块名、文档、市场索引及打包检查。</p>
+<p>改名后，以 <code>npm pack</code> 实际输出的 <code>.tgz</code> 文件名替换下面的示例文件名。</p>
+<pre><code class="language-sh">npm login
+npm publish ./dsh-skill-studio-0.2.2.tgz --access public
+</code></pre>
+<p>npm 可能要求浏览器登录或双重验证，按 npm 自身提示完成。确认发布成功后，让网友输入真实包名和精确版本，例如：</p>
+<pre><code class="language-sh">dsh plugin --profile web add dsh-skill-studio@0.2.2
+</code></pre>
+<p>Desktop 直接在插件安装器中输入 <code>dsh-skill-studio@0.2.2</code>。这条命令只有在包确实以该名称发布后才可用。</p>
+<h3 id="zh-publish-github-发布预构建包">GitHub 发布预构建包</h3>
+<p>创建自己的公开仓库，填入真实 repository/homepage，并将源码、预构建产物和文档提交后创建标签。以下命令在你自己的 checkout 中执行，提交前检查 <code>git status</code>，避免把本地数据或测试工作区加入仓库：</p>
+<pre><code class="language-sh">git init
+npm run build
+git add .
+git add -f lib
+git commit -m &quot;Release Skills Studio 0.2.2&quot;
+git branch -M main
+git remote add origin https://github.com/YOUR_GITHUB_USER/dsh-skill-studio.git
+git push -u origin main
+git tag v0.2.2
+git push origin v0.2.2
+</code></pre>
+<p>在 GitHub Releases 创建 <code>v0.2.2</code> 并上传 <code>dsh-skill-studio-0.2.2.tgz</code>。安装命令示例，替换用户名并确认链接已存在：</p>
+<pre><code class="language-sh">dsh plugin --profile web add https://github.com/YOUR_GITHUB_USER/dsh-skill-studio/releases/download/v0.2.2/dsh-skill-studio-0.2.2.tgz
+</code></pre>
+<p>也可从 Git 仓库安装：</p>
+<pre><code class="language-sh">dsh plugin --profile web add github:YOUR_GITHUB_USER/dsh-skill-studio#v0.2.2
+</code></pre>
+<p>Git 安装应包含已经生成的运行产物；用户无需在安装时运行构建脚本。若你自行添加 <code>prepare</code> 等安装时脚本，pnpm 可能要求额外批准，应以宿主提示为准，不要为了安装盲目允许所有依赖脚本。</p>
+<p>本项目开发时忽略 <code>lib/</code>，因此上面的 <code>git add -f lib</code> 用于把发行产物明确加入发布提交；只提交源码但不构建，会使 Git 直装缺少入口文件。</p>
+<h3 id="zh-publish-仓库自带的自动检查">仓库自带的自动检查</h3>
+<p>源码包含 <code>.github/workflows/check.yml</code>。推送到自己的 GitHub 仓库或提交 PR 后，它会在 Linux、Windows、macOS 的 Node 24 环境运行安装、测试、构建与打包，并在 Actions 中保留各平台 <code>.tgz</code> 产物。首次公开发布前，打开该仓库 Actions 页面检查三项任务的实际结果；有这份工作流文件不代表它已经在三个系统上执行通过。</p>
+<p>这份工作流不会自动发布到 npm，也不会替你创建公开 Release 或 Pages。确认 CI 与发行产物后，再执行上面的发布步骤。若已安装并登录 GitHub CLI，也可用以下命令创建 Release 并上传包：</p>
+<pre><code class="language-sh">gh release create v0.2.2 ./dsh-skill-studio-0.2.2.tgz --title &quot;Skills Studio 0.2.2&quot; --notes &quot;Skills Studio 0.2.2: clearer skill views and catalog synchronization. See README for installation and verification.&quot;
+</code></pre>
+<p>Release 标签已存在时，该命令使用现有标签；确认它指向刚验证的发行提交。发布后仍应按公开 URL 再做一次真实安装检查。</p>
+</section>
+<section class="doc-section" id="zh-market" data-key="market"><h2 id="zh-market-6-自建市场索引">6. 自建市场索引</h2>
+<p><strong>DSH 没有内置索引源，也没有必须注册的官方市场账号。</strong> 它接受一个公开的 JSON 索引 URL。你可以发布自己的“IT咖啡馆 X 老陈聊AI 插件索引”，其中先放本插件。</p>
+<h3 id="zh-market-索引内容">索引内容</h3>
+<p>npm 方式的完整最小示例：</p>
+<pre><code class="language-json">{
+  &quot;format&quot;: 1,
+  &quot;title&quot;: { &quot;en&quot;: &quot;IT咖啡馆 X 老陈聊AI Plugins&quot;, &quot;zh&quot;: &quot;IT咖啡馆 X 老陈聊AI 插件&quot; },
+  &quot;plugins&quot;: [
+    {
+      &quot;name&quot;: &quot;dsh-skill-studio&quot;,
+      &quot;title&quot;: { &quot;en&quot;: &quot;Skills Studio&quot;, &quot;zh&quot;: &quot;技能工作台&quot; },
+      &quot;description&quot;: {
+        &quot;en&quot;: &quot;Inspect, create, import and manage local DSH skills.&quot;,
+        &quot;zh&quot;: &quot;查看、创建、导入并管理 DSH 本地技能。&quot;
+      },
+      &quot;author&quot;: &quot;IT咖啡馆 X 老陈聊AI&quot;,
+      &quot;versions&quot;: [
+        {
+          &quot;version&quot;: &quot;0.2.2&quot;,
+          &quot;publishTimestamp&quot;: 1793746800,
+          &quot;source&quot;: { &quot;type&quot;: &quot;npm&quot; }
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>把 <code>publishTimestamp</code> 改为实际发布的 Unix 秒；发布前按实际包名修改 <code>name</code>，并把包自身的 <code>engines.dsh</code> 原样写入对应版本的 <code>engines.dsh</code>。省略示例中的兼容范围不等于宣称所有宿主都适用，宿主安装时仍会校验包的声明。</p>
+<p>Git 方式把版本的 <code>source</code> 换成以下结构，使用实际发布提交的完整 <strong>40 位 SHA</strong>；不能填 <code>main</code> 或标签名代替：</p>
+<pre><code class="language-json">{
+  &quot;type&quot;: &quot;git&quot;,
+  &quot;url&quot;: &quot;https://github.com/YOUR_GITHUB_USER/dsh-skill-studio&quot;,
+  &quot;commit&quot;: &quot;REPLACE_WITH_ACTUAL_40_CHARACTER_COMMIT_SHA&quot;
+}
+</code></pre>
+<p>这段 Git 示例中的 SHA 是占位文字，替换后才是有效索引。可用 <code>git rev-parse &#39;v0.2.2^{commit}&#39;</code> 获取发布标签对应的提交。</p>
+<p>本项目附带生成脚本，填入真实仓库与提交即可生成 Git 来源索引：</p>
+<pre><code class="language-sh">node scripts/generate-market.mjs --repository https://github.com/YOUR_GITHUB_USER/dsh-skill-studio --commit ACTUAL_40_CHARACTER_COMMIT_SHA --output docs/market/index.json
+</code></pre>
+<p>脚本参数中的用户名和 SHA 都需要替换，不能原样运行示例。</p>
+<p>官方仓库也提供索引生成器。把真实 npm 包名或 Git 仓库 URL 写进 <code>plugins.txt</code>，在已经安装并构建的 DSH 源码仓库运行：</p>
+<pre><code class="language-sh">pnpm --filter @deepseek-ai/dsh-plugin-market-generator start --input plugins.txt --output site/index.json --title &quot;IT咖啡馆 X 老陈聊AI Plugins&quot;
+</code></pre>
+<h3 id="zh-market-github-pages-托管">GitHub Pages 托管</h3>
+<ol>
+<li><p>将索引保存为你仓库的 <code>docs/market/index.json</code>，图标若有则放在相邻 <code>icons/</code> 目录。</p>
+</li>
+<li><p>提交并推送到 GitHub。</p>
+</li>
+<li><p>在仓库「Settings → Pages」选择「Deploy from a branch」，分支选 <code>main</code>，目录选 <code>/docs</code>。</p>
+</li>
+<li><p>等 Pages 显示部署成功，打开真实地址验证 JSON：</p>
+<p><code>https://YOUR_GITHUB_USER.github.io/dsh-skill-studio/market/index.json</code></p>
+</li>
+<li><p>确认此地址返回 2xx、UTF-8 JSON、没有跳转，也不是 GitHub 的文件预览 HTML 页面。终端可检查 <code>curl -I &quot;实际URL&quot;</code>。</p>
+</li>
+</ol>
+<p>上述是部署后的地址格式，不是本交付已经上线的市场。Cloudflare Pages、对象存储或其他静态主机同样可以托管；使用实际返回 JSON 的 HTTPS 地址。</p>
+<h3 id="zh-market-网友如何添加">网友如何添加</h3>
+<ol>
+<li>DSH「插件 → 实验性插件」启用「自定义插件索引」。有的版本先点「更多」。</li>
+<li>打开「发现 → 添加索引源」，粘贴你已经验证的 HTTPS 索引地址。</li>
+<li>搜索 Skills Studio / 技能工作台。</li>
+<li>打开卡片，核对作者、包名、版本和真实安装来源，安装后启用。</li>
+</ol>
+<p>添加索引只增加发现来源，不自动安装其中所有插件，也不构成 DSH 官方安全认证。</p>
+</section>
+<section class="doc-section" id="zh-community" data-key="community"><h2 id="zh-community-7-提高社区可发现性">7. 提高社区可发现性</h2>
+<ul>
+<li>给公开仓库添加 GitHub 话题 <strong><code>dsh-plugin</code></strong>。这是官方 README 推荐的社区发现入口。</li>
+<li>npm <code>keywords</code> 中填写真实相关关键词；让 README 清楚说明插件版本、兼容范围和安装入口。</li>
+<li>可向 <a href="https://github.com/dshworks/awesome-dsh-plugins" target="_blank" rel="noopener noreferrer">dshworks/awesome-dsh-plugins</a> 提交收录 PR。按其 <a href="https://github.com/dshworks/awesome-dsh-plugins/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">CONTRIBUTING.md</a> 修改 <code>data/plugins.json</code>，运行 <code>node scripts/validate.mjs</code> 和 <code>node scripts/render.mjs</code>，提交相应生成文件。</li>
+<li><code>verifiedAgainst</code> 写实际测试过的 DSH 版本，<code>lastVerified</code> 写实际核验日期；<code>status</code> 如实填写，<code>verified</code> 需有 <code>evidence</code>，例如 <code>package.json#dsh.bundle</code>。npm 未发布就不要填写一个不存在的 npm 地址。</li>
+</ul>
+<p>该社区公开的 Discover 索引为 <code>https://dsh.works/awesome-dsh-plugins/market/index.json</code>。能否被收录由维护者决定；提交 PR 不等于已上架。</p>
+</section>
+<section class="doc-section" id="zh-troubleshoot" data-key="troubleshoot"><h2 id="zh-troubleshoot-8-排错">8. 排错</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>现象</th>
+<th>检查</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>安装成功但没有入口</td>
+<td>检查当前 Desktop/Web profile、插件是否已启用、兼容性错误和宿主的重载提示。</td>
+</tr>
+<tr>
+<td>版本不兼容</td>
+<td>记录 <code>dsh --version</code> 与插件版本；使用满足声明的宿主，不能把 master 版本当作本机版本。</td>
+</tr>
+<tr>
+<td>找不到包</td>
+<td>本地使用实际 <code>.tgz</code> 路径；公开地址需先发布。切换 npm 镜像不会修复不存在的 GitHub Release 文件。</td>
+</tr>
+<tr>
+<td>pnpm 找不到</td>
+<td>Web CLI 检查 PATH；Desktop 使用内置安装器。</td>
+</tr>
+<tr>
+<td>保存提示文件被占用或无权写入</td>
+<td>程序会先有限重试；仍失败时，错误保留在保存区域，草稿不清空。关闭可能占用文件的编辑器或同步程序，检查写入权限后重试；也可复制错误详情用于排查。</td>
+</tr>
+<tr>
+<td>提示原文件已保留、需恢复</td>
+<td>展开「错误详情」查看恢复位置，保留这些文件和错误信息。先解决占用或权限问题，不要反复保存或自行删除恢复副本；这类错误不提供普通保存重试。</td>
+</tr>
+<tr>
+<td>保存提示文件已变化</td>
+<td>重新读取最新内容并合并修改，再保存；这是防覆盖保护。</td>
+</tr>
+<tr>
+<td>某技能无法调用</td>
+<td>确认「工作区」「模式」、启用状态和两个调用开关。默认极简模式不支持本地技能；同名技能可能来自其他位置。</td>
+</tr>
+<tr>
+<td>新增技能或调用策略没反映到 <code>/</code> 菜单</td>
+<td>点提示图标查看同步详情，关闭后重新打开 <code>/</code> 菜单，并确认工作区和模式与会话一致。若仍未更新，再重连检查。</td>
+</tr>
+<tr>
+<td>停用后旧会话仍记得正文</td>
+<td>旧历史仍包含已读内容；新建会话再检查后续可用性。</td>
+</tr>
+<tr>
+<td>GitHub 获取失败</td>
+<td>检查网络、仓库路径和提交是否可读。私有仓库、登录凭据和任意网站下载不在公开导入的默认范围内。</td>
+</tr>
+<tr>
+<td>远程 DSH 读不到电脑文件</td>
+<td>使用服务器上的实际路径，或通过界面提供的上传入口传输。</td>
+</tr>
+<tr>
+<td>只读条目不能修改</td>
+<td>先确认来源；使用可写本地根的副本进行定制。</td>
+</tr>
+</tbody></table></div>
+<p>本项目及随附文档由 <strong>IT咖啡馆 X 老陈聊AI</strong> 共同打造，以该联合品牌署名。本文的发布命令供维护者手动执行；交付不自动发布 npm、GitHub、市场索引或社交平台内容。</p>
+</section>
+<section class="doc-section" id="zh-references" data-key="references"><h2 id="zh-references-官方依据">官方依据</h2>
+<ul>
+<li><a href="https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/README.zh.md" target="_blank" rel="noopener noreferrer">CLI 与 profile 行为</a></li>
+<li><a href="https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/docs/user/guide/plugin-market.zh.md" target="_blank" rel="noopener noreferrer">插件索引指南</a></li>
+<li><a href="https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/plugin-market-generator/README.zh.md" target="_blank" rel="noopener noreferrer">索引生成器</a></li>
+<li><a href="https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/packages/skill/skill-filesystem/README.zh.md" target="_blank" rel="noopener noreferrer">本地技能发现</a></li>
+</ul>
+</section>
+  <section class="doc-section" id="zh-changes" data-key="changes"><h2>0.2.2 版本变更</h2><h3 id="zh-changes-0-2-2">0.2.2</h3>
+<ul>
+<li>默认进入「当前模式」，只显示所选工作区、模式实际提供且至少允许一种调用的技能。「技能库」单独保留本地技能文件和只读插件项的清单，不再用技能库总数表示当前模式可用数量。</li>
+<li>模型自动使用与 <code>/</code> 手动调用分别计数和筛选。对照聊天的 <code>/</code> 菜单时使用手动调用清单；仅允许模型调用、两种调用都关闭或被同名副本覆盖的技能不会混入。</li>
+<li>当前模式列表移除文件开关。只读插件技能显示提供方信息；技能库中的开关明确为「文件启用」，不暗示能在所选模式中使用。</li>
+<li>目录未完整确认时显示无法确认，不把未知状态当成“0 个可用”。来源分组、筛选和数量跟随当前视图，切换范围不保留会误用于批量操作的隐藏选择。</li>
+<li>新建或导入成功后自动打开「技能库」，避免当前模式不支持时找不到刚添加的技能。</li>
+<li>保留 0.2.1 的保存重试、持久错误与草稿、模式名称、导入、完整资源和历史恢复能力。</li>
+</ul>
+<p>在原 profile 安装 <code>dsh-skill-studio-0.2.2.tgz</code> 升级。技能和历史目录保持原位置；保留 <code>dsh-skill-studio-0.2.1.tgz</code> 与原交付 ZIP 供回退。截图或测试中的“8 个”只是该模式当时的实际结果，不是硬编码的固定数量。最终测试与验收范围见<a href="#zh-verification">验证记录</a>。</p>
+<h3 id="zh-changes-0-2-1">0.2.1</h3>
+<ul>
+<li>保存遇到短暂文件占用时进行有限重试；持续占用或写入权限问题明确报错。失败不改写原文件，重试不绕过外部修改的哈希检查。</li>
+<li>保存错误保留在详情的保存区域，提供重试和复制错误详情，未保存内容保留。普通查看和刷新不再清除保存错误；写入成功后的刷新失败与保存失败分别说明。</li>
+<li>使用 DSH 的「工作区」「模式」名称；内置模式显示标准模式、PTC 模式、极简模式、创造模式，自定义名称原样保留。左侧和保存位置显示具体工作区名称。</li>
+<li>用直接说明表达当前模式能否使用技能。DSH 默认极简模式不提供本地技能，不再写“未进入所选预设”。</li>
+<li>成功操作使用「已保存」等简短结果，目录和菜单同步详情收进提示图标；左侧和路径说明改为面向用户的技能使用范围。</li>
+<li>导入改为「导入技能 → 导入到 → 下一步 → 导入」，说明为“从 GitHub 或本地文件添加技能”。只有遇到真实同名问题时才显示提醒，长路径在「保存位置」中查看和复制。</li>
+</ul>
+<p>在原 profile 安装 <code>dsh-skill-studio-0.2.1.tgz</code> 升级。技能和历史目录保持原位置；保留 <code>dsh-skill-studio-0.2.0.tgz</code> 与原交付 ZIP 供回退，0.2.1 另存，不覆盖旧交付。</p>
+<p>测试数量和范围以<a href="#zh-verification">验证记录</a>为准。占用故障通过可复现测试验证，不能视为 Windows/macOS 真机验收；实际公共 GitHub 下载和公开发布仍以各自完成的验证为准。</p>
+<h3 id="zh-changes-0-2-0">0.2.0</h3>
+<ul>
+<li>默认使用紧凑列表，详情留在工作台内容区；打开技能先看「概览」，正文修改进入「编辑」。关闭控件不再占用 DSH 标题栏。</li>
+<li>顶部可选择目标工作区与 Agent 预设，支持仅全局技能。选择只改变检查视图，不切换真实会话的目录或预设，也不创建 Agent。</li>
+<li>文件启停与预设下的实际可用性分别显示。概览中的两种调用策略独立保存，通过 YAML AST 保留原正文、注释和其他元数据；按钮为「保存调用设置」。</li>
+<li>修改后核对实际技能目录，再报告目录核验和菜单同步状态。文件保存成功不等于所有预设都已提供该技能。</li>
+<li>针对 SDK 的会话技能菜单缓存，通过公开 Loader 生命周期仅重挂官方 <code>ui-skill</code> 菜单桥；当前打开的技能菜单组会先撤下，重新打开菜单时取得新列表。其他已连接且可见的窗口约每 5 秒检查变更版本，恢复可见时也会检查。</li>
+<li>增加点击问号帮助，列表移除内部优先级数字。资源页支持上传资源，并保留完整包导出、来源更新预览、并发哈希保护和历史恢复。</li>
+</ul>
+<p>升级安装 <code>dsh-skill-studio-0.2.0.tgz</code> 到原 profile。技能文件和 <code>$DSH_HOME/skill-studio</code> 历史目录保持原位置；保留 <code>dsh-skill-studio-0.1.0.tgz</code> 与旧交付 ZIP，回退时重新安装旧包。</p>
+<p>菜单刷新不重启 Agent，也不会重写会话中已经加载的正文。隐藏或断开的窗口不承诺在 5 秒内同步；不支持对应公开接口的宿主会给出状态提示。测试结论以<a href="#zh-verification">验证记录</a>对应的版本为准：Windows/macOS 未真机验证，真实外网 GitHub 下载在当前环境返回 HTTP 403，公开 npm/Release/索引地址需实际发布后才可使用。</p>
+<h3 id="zh-changes-0-1-0">0.1.0</h3>
+<p>首版提供本地技能管理、双语界面、完整包导入导出、GitHub 固定提交与来源更新预览、资源管理、变更历史和哈希防覆盖。该版交付包保留为回退版本。</p>
+</section>
+  <section class="doc-section" id="zh-verification" data-key="verification"><h2>最终验证记录</h2><p>2026-11-05 · <strong>IT咖啡馆 X 老陈聊AI</strong>。</p>
+<h3 id="zh-verification-环境与范围">环境与范围</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>记录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>环境</td>
+<td>Linux，Node.js <code>24.22.1</code></td>
+</tr>
+<tr>
+<td>插件</td>
+<td><code>dsh-skill-studio@0.2.2</code></td>
+</tr>
+<tr>
+<td>主要宿主</td>
+<td>DSH <code>0.2.2-rc.1</code>；源码基线 <code>fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159</code></td>
+</tr>
+<tr>
+<td>全部自动测试</td>
+<td><strong>116 项通过，0 项失败，1 项条件跳过</strong>，共 117 项</td>
+</tr>
+<tr>
+<td>SDK 契约探针</td>
+<td>本轮分别在真实 DSH <code>0.2.2-rc.1</code> 和独立安装的 <code>0.2.1-rc.5</code> 上重新执行通过</td>
+</tr>
+<tr>
+<td>实际浏览器</td>
+<td>DSH <code>0.2.2-rc.1</code> Web，隔离 profile 和合成技能；比较真实聊天 <code>/</code> 菜单与插件名单</td>
+</tr>
+<tr>
+<td>安装</td>
+<td>新 profile 安装本地 <code>.tgz</code> 成功，9 个运行依赖正常解析；额外安装一个仅供测试的只读提供方夹具</td>
+</tr>
+<tr>
+<td>平台边界</td>
+<td>Windows/macOS 未真机验收；不将 Linux 或故障注入结果称为 Windows 真机结果</td>
+</tr>
+</tbody></table></div>
+<p>完整浏览器自动回归因执行环境条件跳过，另做下述真实浏览器操作。没有运行模型回合，也没有修改用户本机技能。</p>
+<h3 id="zh-verification-本次修复的判断标准">本次修复的判断标准</h3>
+<p>技能库总数、文件开关、当前模式目录和 <code>/</code> 候选属于不同集合。当前模式的名单来自所选工作区与模式下的真实 Registry 获胜条目，至少允许一种调用才能计入“可用”。</p>
+<ul>
+<li><code>catalog.availableIds</code>：允许模型自动使用或用户手动调用的实际获胜项。</li>
+<li><code>automaticIds</code> / <code>manualIds</code>：两种调用权限分别统计；后者使用与官方 SessionSkillCatalog 相同的 <code>isUserInvocable</code> 条件。</li>
+<li><code>registeredIds</code>：还包括两种调用权限都关闭的目录项；这些项不算可用。</li>
+<li>目录不完整、模式无法确认或文件策略尚未被发现时，<code>complete=false</code>、各总数为 <code>null</code>；界面显示“—”，只展示已确认项，不显示确定的零。</li>
+</ul>
+<p>技能库保留扫描到的本地文件及当前模式提供的只读插件条目。因此技能库 40 项不等于 40 个物理文件，也不等于当前模式可用 40 项。</p>
+<h3 id="zh-verification-自动测试">自动测试</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>通过数</th>
+<th>主要覆盖</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>manager</td>
+<td>26</td>
+<td>原子写入、完整资源、并发哈希、YAML 与调用策略、启停、来源、复制和恢复</td>
+</tr>
+<tr>
+<td>file-operations</td>
+<td>11</td>
+<td>短暂/持续锁定、原文件保留、等待期间外部修改、清理/回滚失败、跨重启暂存与清理预算</td>
+</tr>
+<tr>
+<td>archive</td>
+<td>12</td>
+<td>ZIP、二进制、CRC、大小限制、路径边界和执行位</td>
+</tr>
+<tr>
+<td>github</td>
+<td>13</td>
+<td>固定提交、资源哈希、URL、限流与网络异常、危险树结构</td>
+</tr>
+<tr>
+<td>context</td>
+<td>18</td>
+<td>真实工作目录、Git 根、项目隔离、模式租约、rc.5 兼容与未知状态</td>
+</tr>
+<tr>
+<td>host</td>
+<td>11</td>
+<td>owner 权限、Typert JSON、错误详情、批量操作与模式版本</td>
+</tr>
+<tr>
+<td>host-runtime</td>
+<td>5</td>
+<td>真实 Registry/Scope/文件监听；40 项库与极简 8 项、标准模式同名获胜项、官方手动过滤、两种调用皆关闭、不完整提供方、策略等待</td>
+</tr>
+<tr>
+<td>catalog-sync</td>
+<td>3</td>
+<td>真实官方 ui-skill、InputTriggerService、Loader，以及保留会话中的目录缓存更新</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>1</td>
+<td>实际提供方的发现、加载、启停、删除和资源恢复</td>
+</tr>
+<tr>
+<td>release</td>
+<td>1</td>
+<td>索引生成器与官方格式校验</td>
+</tr>
+<tr>
+<td>ui</td>
+<td>3</td>
+<td>中英字典、构建渲染、容器内详情、帮助和策略保存</td>
+</tr>
+<tr>
+<td>ui-interaction</td>
+<td>7</td>
+<td>真实 React：草稿/错误持久、刷新与语言切换、重试、恢复错误、导入部分失败、模式名称与实时标题</td>
+</tr>
+<tr>
+<td>ui-mode</td>
+<td>5</td>
+<td>真实 React：默认当前模式、8/40 分离、手动过滤、只读无开关、未知计数、隐藏选择与脏编辑导航</td>
+</tr>
+</tbody></table></div>
+<p>同名测试中，技能库保留两个物理副本，但模式清单只计真实获胜版本。模型自动名单和手动名单均与真实 Registry 的官方过滤结果逐项对照，未仅比较数量。</p>
+<p>复跑：</p>
+<pre><code class="language-sh">npm ci
+npm test
+npm run build
+node scripts/check-runtime-contract.mjs
+</code></pre>
+<p>rc.5 探针和独立安装方法见 <a href="#zh-rc5">VERIFICATION-rc5.md</a>。新目录统计的主要真实运行时集成在 rc.1 执行，不宣称两个版本已做完全相同的全平台浏览器验收。</p>
+<h3 id="zh-verification-真实浏览器验收">真实浏览器验收</h3>
+<p>使用一个测试专用提供方注册 8 个只读技能，加 31 个个人技能、1 个工作区技能，共 40 项。提供方夹具不进入发行包，数量不硬编码进插件。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>观察结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>极简会话的 <code>/</code> 菜单</td>
+<td>真实聊天菜单列出 8 个测试只读技能</td>
+</tr>
+<tr>
+<td>打开工作台</td>
+<td>默认选中“当前模式”，显示同样 8 项；名称与此前菜单逐项完全相等</td>
+</tr>
+<tr>
+<td>左侧来源与控制</td>
+<td>只显示插件自带 8 项；没有把个人 31/工作区 1 当作模式可用数；只读行显示“插件提供”，没有蓝色开关</td>
+</tr>
+<tr>
+<td>切换技能库</td>
+<td>保留 40 项合并清单；仅 32 个本地技能有文件开关，8 个只读条目没有文件开关</td>
+</tr>
+<tr>
+<td>切换标准模式查看</td>
+<td>该浏览器夹具名称均唯一，目录注册 40 项，其中 1 项关闭两种调用；显示可用 39、自动 38、手动 38</td>
+</tr>
+<tr>
+<td>点 <code>/ 手动调用</code></td>
+<td>自动-only 技能不在名单、手动-only 技能仍在、两种调用皆关闭者不在名单；不是以相同数量冒充相同集合</td>
+</tr>
+<tr>
+<td>所用产物</td>
+<td>实际浏览器使用的 client、host、manager 和文件操作模块均逐字节匹配最终构建</td>
+</tr>
+</tbody></table></div>
+<p>真实运行时自动测试另设同名覆盖夹具，统计与上述名称唯一的浏览器夹具有差别，这是测试条件不同，不是固定模式数量。</p>
+<p>保存错误/草稿/重试的浏览器异常流程已在 0.2.1 验证，本轮通过相关真实 React 和文件系统回归；不把旧版每项操作写成本轮重新逐项点击。真实 GitHub 外网下载此前受环境 HTTP 403 限制，协议测试不代表外网端到端成功。</p>
+<h3 id="zh-verification-使用边界">使用边界</h3>
+<ul>
+<li>“当前模式可用”表示当前目录允许调用，不表示已实际执行成功，也不表示正文已全部加载到模型上下文。</li>
+<li><code>/</code> 菜单只展示允许手动调用的项；自动-only 技能可以计入模式可用，但不会出现在该菜单。</li>
+<li>工作台模式选择只改变查看范围，不切换真实会话。应使用相同工作区与模式，并重新展开聊天菜单进行对照。</li>
+<li>技能库的“文件启用”是文件层操作，可能影响读取该文件的其他模式/Agent；不是为当前模式强制安装一个缺失的提供方。</li>
+<li>停用不删除已经读入历史的内容；只读插件技能需由原插件管理。</li>
+<li>临时文件占用仍使用有界重试与原子替换；持续失败保留草稿及明确错误。浏览器关闭或崩溃后的草稿恢复未被承诺。</li>
+<li>其他可见、已连接窗口约每 5 秒检查变更；隐藏或离线窗口不保证此时限。</li>
+<li>npm、GitHub Release 与市场索引没有自动发布。旧 0.2.1 交付保留，新版单独提供。</li>
+</ul>
+</section>
+  <section class="doc-section" id="zh-rc5" data-key="rc5"><h2>rc.5 兼容性复核</h2><p>2026-11-05，Linux，Node.js <code>24.22.1</code>。使用独立目录实际安装的 DSH <code>0.2.1-rc.5</code>，对应 Cordis <code>4.0.5</code>、Loader <code>1.0.6</code>；同时在工程开发依赖 DSH <code>0.2.2-rc.1</code> 上复核。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>检查</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实际 AgentPresetRegistry 的 <code>acquireScope</code>、<code>inspectCompositions</code></td>
+<td>通过；租约保留已撤回的预设版本，异步释放后移除，重复释放安全</td>
+</tr>
+<tr>
+<td>实际 Session、Projection、WorkingDirectory</td>
+<td>通过；已提交的工作目录覆盖创建时目录，创建元数据不变</td>
+</tr>
+<tr>
+<td>冷会话在创建后切换预设</td>
+<td>通过；读取最后提交的 <code>minimal</code>，不会误用创建时或部署默认的 <code>standard</code></td>
+</tr>
+<tr>
+<td>实际 Loader 的 <code>entries()</code>、<code>fiber.restart()</code></td>
+<td>通过；目标实例重新挂载，启用状态和配置不变</td>
+</tr>
+<tr>
+<td>rc.5 实际 ui-skill / InputTriggerService 与真实文件系统 provider 集成</td>
+<td>临时隔离安装中 5 项通过，覆盖旧会话缓存刷新、策略生效等待、停用后的同名回退，以及无文件系统 provider 的预设</td>
+</tr>
+</tbody></table></div>
+<p>rc.5 尚无 <code>agentPresets.presetForSession()</code>。插件只在该方法不存在时，使用 rc.5 的公开 <code>sessionProjections.stateOf(session, &#39;agentPreset&#39;)</code> 读取已提交状态。rc.1 优先使用专用读取方法，避免调用旧接口。因此保留 rc.5 兼容下限。</p>
+<p>源码包附带 <code>scripts/check-runtime-contract.mjs</code>。它实际加载指定 DSH 安装中的上述服务；相邻 Agent、文件执行和提示组装能力使用最小占位，因为检查过程只读取状态，不创建 Agent 或运行会话回合。该脚本不替代完整浏览器验收或 Windows / macOS 真机测试。</p>
+<p>在源码目录执行，默认检查工程开发依赖：</p>
+<pre><code class="language-sh">npm ci
+node scripts/check-runtime-contract.mjs
+</code></pre>
+<p>独立安装并复查 rc.5：</p>
+<pre><code class="language-sh">DSH_RC5_TEST_DIR=&quot;$(mktemp -d)&quot;
+npm install --prefix &quot;$DSH_RC5_TEST_DIR&quot; --ignore-scripts --no-audit --no-fund @deepseek-ai/dsh@0.2.1-rc.5
+node scripts/check-runtime-contract.mjs --runtime-package &quot;$DSH_RC5_TEST_DIR/node_modules/@deepseek-ai/dsh/package.json&quot;
+</code></pre>
+<p>也可将 <code>--runtime-package</code> 指向现有 DSH 安装的绝对 <code>package.json</code> 路径。成功时输出一行版本及通过结果；失败退出码为 <code>1</code>。检查自身创建的临时状态会自动清理，指定的 DSH 安装不受修改。</p>
+</section>
+  <footer class="article-footer"><p>由 IT咖啡馆 X 老陈聊AI 共同打造 · 原创文档与联合品牌以双方联合署名 · 第三方资料保留各自归属。</p><a href="#top">↑ 返回顶部</a></footer>
+  </article><article class="language-content" data-content-lang="en" lang="en" hidden>
+  <div class="intro-copy"><p>This guide covers <strong><code>dsh-skill-studio@0.2.2</code></strong>, displayed as <strong>Skills Studio / 技能工作台</strong>, jointly created by <strong>IT咖啡馆 X 老陈聊AI</strong>. The delivered local <code>.tgz</code> is installable. npm, GitHub, and Pages examples remain placeholders until an actual public release. See the <a href="#en-changes">0.2.2 release notes</a> for changes.</p>
+</div>
+  <section class="doc-section" id="en-host" data-key="host"><h2 id="en-host-1-identify-your-host">1. Identify your host</h2>
+<ul>
+<li><strong>Desktop:</strong> Check the version in the application and use its built-in plugin installer.</li>
+<li><strong>Web:</strong> Run <code>dsh --version</code> in the terminal that launches the server. Examples below use the <code>web</code> profile.</li>
+<li><strong>Remote Web:</strong> A local filesystem path means a path on the DSH server. A file on the browser&#39;s computer is not automatically accessible to a remote server.</li>
+</ul>
+<p>The compatibility targets are <strong>0.2.1-rc.5</strong> and <strong>0.2.2-rc.1</strong>. Check the delivered verification report for its recorded versions and environments; it does not establish fresh verification for every later release. Windows and macOS have not been verified on native machines. Successful real GitHub API importing remains unverified in this environment because its public API returned HTTP 403. The npm <code>latest</code> tag may differ from the newest published prerelease and GitHub&#39;s default branch; record the installed version instead of assuming they match.</p>
+<p>For a fresh Web installation, a pinned runtime can be installed with:</p>
+<pre><code class="language-sh">npm install -g @deepseek-ai/dsh@0.2.1-rc.5
+</code></pre>
+<p>Existing users do not need to reinstall a working host. The current source baseline requires <strong>Node.js 24.9.0 or newer</strong>. Web&#39;s <code>dsh plugin</code> forwards package operations to pnpm on PATH. If it is missing, install it through your normal Node setup; the source baseline uses:</p>
+<pre><code class="language-sh">npm install -g pnpm@11.28.5
+</code></pre>
+<p>Desktop supplies its own runtime and installer, so these global CLI installations are normally unnecessary there.</p>
+</section>
+<section class="doc-section" id="en-install" data-key="install"><h2 id="en-install-2-install-the-delivery-archive">2. Install the delivery archive</h2>
+<p>Extract the delivery ZIP and locate <strong><code>dsh-skill-studio-0.2.2.tgz</code></strong>. Install this npm-format archive, rather than the outer source ZIP. Keep <code>dsh-skill-studio-0.2.1.tgz</code> as a separate rollback artifact; do not overwrite it with the new package.</p>
+<h3 id="en-install-desktop-on-windows-macos-or-linux">Desktop on Windows, macOS, or Linux</h3>
+<ol>
+<li>Place the <code>.tgz</code> in a stable local folder.</li>
+<li>Open <strong>Plugins → More → Install third-party plugin</strong>. Some versions place this action under <strong>Add plugin</strong>.</li>
+<li>Enter the archive&#39;s absolute path. Enter only the path, not a <code>dsh plugin</code> command.</li>
+<li>Select <strong>Enable now</strong>, or enable Skills Studio later in the installed list.</li>
+<li>Follow the host&#39;s reload or restart result, then open Skills Studio.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>System</th>
+<th>Example path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td><code>C:\Users\YOUR_NAME\Downloads\dsh-skill-studio-0.2.2.tgz</code></td>
+</tr>
+<tr>
+<td>macOS</td>
+<td><code>/Users/YOUR_NAME/Downloads/dsh-skill-studio-0.2.2.tgz</code></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><code>/home/YOUR_NAME/Downloads/dsh-skill-studio-0.2.2.tgz</code></td>
+</tr>
+</tbody></table></div>
+<p>Replace these with the real path. The ordinary npm CLI refuses operations on Desktop&#39;s reserved profile. Do not replace <code>web</code> with <code>desktop</code> in the following Web commands.</p>
+<h3 id="en-install-web-on-windows-powershell">Web on Windows PowerShell</h3>
+<p>Open PowerShell beside the package:</p>
+<pre><code class="language-powershell">dsh --version
+dsh plugin --profile web add &quot;.\dsh-skill-studio-0.2.2.tgz&quot;
+</code></pre>
+<p>Or supply an absolute path; retain quotes when it contains spaces:</p>
+<pre><code class="language-powershell">dsh plugin --profile web add &quot;C:\DSH Plugins\dsh-skill-studio-0.2.2.tgz&quot;
+</code></pre>
+<h3 id="en-install-web-on-macos-linux-or-wsl">Web on macOS, Linux, or WSL</h3>
+<pre><code class="language-sh">dsh --version
+dsh plugin --profile web add ./dsh-skill-studio-0.2.2.tgz
+</code></pre>
+<p>A WSL server uses WSL&#39;s user home and path syntax. A Windows download may be available through a path such as <code>/mnt/c/Users/YOUR_NAME/Downloads/dsh-skill-studio-0.2.2.tgz</code>.</p>
+<p>Without a global <code>dsh</code> command, use the same pinned runtime as your installation:</p>
+<pre><code class="language-sh">npx @deepseek-ai/dsh@0.2.1-rc.5 plugin --profile web add ./dsh-skill-studio-0.2.2.tgz
+</code></pre>
+<p>pnpm must still be available to the runtime. For a custom profile, replace <code>web</code> with its actual name. Place <code>--profile</code> before <code>add</code>.</p>
+<h3 id="en-install-activate-and-check">Activate and check</h3>
+<p>Follow the host&#39;s activation result. If a restart is required, stop the existing process and relaunch from its original working directory:</p>
+<pre><code class="language-sh">dsh web
+</code></pre>
+<p>Verify that the installed list shows version <code>0.2.2</code>, the plugin is enabled, and Skills Studio opens on <strong>Current mode</strong>. <strong>Skill library</strong> separately shows the full managed inventory. Switch DSH&#39;s language in <strong>Settings → General</strong> and check that the panel follows. Check the <strong>Workspace</strong> and <strong>Mode</strong> selectors, create a small test skill in the intended root, then try editing, saving its invocation settings, disabling, recovery, and export. Reopen <code>/</code> after changes to check the new command list. Instructions already read by a conversation may remain in its history.</p>
+</section>
+<section class="doc-section" id="en-use" data-key="use"><h2 id="en-use-3-understand-sources-and-state">3. Understand sources and state</h2>
+<p>The default <strong>Current mode</strong> view is a compact, searchable list of skills actually callable in the selected workspace and mode. <strong>Skill library</strong> is a separate file-management view. Selecting a skill opens <strong>Overview</strong> inside the workbench; enter <strong>Edit</strong> for instruction changes. Use question-mark help for explanations.</p>
+<p>The header&#39;s <strong>Workspace</strong> and <strong>Mode</strong> selectors initially show the current session’s selections, marked <strong>(current)</strong>. Without a session, the default mode is marked <strong>(default)</strong>. You may select another known workspace without changing the actual session&#39;s settings. The sidebar shows that workspace&#39;s name. With no selected session, personal skills remain manageable.</p>
+<p>Built-in modes use DSH&#39;s names: Standard mode, PTC mode, Minimal mode, and Creator mode. Custom mode names are retained. DSH&#39;s default Minimal mode does not provide local skills, but plugins can still supply skills. Standard and PTC modes normally provide local skills. Configuration can change this behavior; counts always follow the actual host catalog, not a hard-coded total.</p>
+<h3 id="en-use-current-mode-and-skill-library">Current mode and Skill library</h3>
+<p><strong>Current mode</strong> includes only callable catalog entries: the host provides the skill and at least one invocation policy permits use. <strong>Skill library</strong> retains all scanned local skills plus read-only plugin entries supplied in the selected mode. Local items include disabled files, copies shadowed by another location, skills unavailable in this mode, and skills with both invocation policies off. Its <strong>File enabled</strong> switch controls the file, not the current mode&#39;s availability, and can affect other modes or agents reading that file.</p>
+<p>Select the <strong>Available in mode</strong>, <strong>Model use</strong>, or <strong>/ Commands</strong> count to filter its list. Automatic and manual invocation have separate counts. To compare with a conversation&#39;s <code>/</code> menu, choose the same workspace and mode and use the manual-invocation filter. Model-only skills do not belong in that list; skills with both policies off are not callable.</p>
+<p>An incomplete catalog is shown as unconfirmed, rather than a definite zero. Read-only plugin skills identify their provider without a blue file switch.</p>
+<p>A successful create or import opens <strong>Skill library</strong> so the new item is easy to find, even when the selected mode cannot use it.</p>
+<p>When creating or copying, use <strong>Save to</strong>. When importing, use <strong>Import to</strong> to choose who can use the skill:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A named workspace</td>
+<td>Instructions for that workspace, such as project conventions or a dedicated workflow.</td>
+</tr>
+<tr>
+<td>Personal skills</td>
+<td>Files shared across this machine&#39;s workspaces; each mode still needs to provide them. DSH-only and shared-agent locations are identified separately.</td>
+</tr>
+<tr>
+<td>Plugin-provided skills</td>
+<td>Read-only skills supplied by plugins. Copy to a writable location before customizing.</td>
+</tr>
+</tbody></table></div>
+<p>Use the help control beside <strong>Save location</strong> to view or copy the actual path. A long file path is not required knowledge for ordinary use.</p>
+<h3 id="en-use-directory-reference">Directory reference</h3>
+<p>For users who need to locate files manually, the default locations are below. The actual <strong>Save location</strong> takes precedence.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Default path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Workspace DSH skills</td>
+<td><code>&lt;projectRoot&gt;/.dsh/skills</code></td>
+</tr>
+<tr>
+<td>Workspace shared skills</td>
+<td><code>&lt;projectRoot&gt;/.agents/skills</code></td>
+</tr>
+<tr>
+<td>Custom locations</td>
+<td>Provider-configured directories</td>
+</tr>
+<tr>
+<td>Personal DSH skills</td>
+<td><code>$DSH_HOME/skills</code>, default <code>~/.dsh/skills</code></td>
+</tr>
+<tr>
+<td>Personal shared skills</td>
+<td><code>$DSH_AGENTS_HOME/skills</code>, default <code>~/.agents/skills</code></td>
+</tr>
+<tr>
+<td>Plugin-provided skills</td>
+<td>Managed by the supplying plugin</td>
+</tr>
+</tbody></table></div>
+<p>Copies with the same name can exist at different locations. Details identify the copy that the selected workspace and mode actually use. <code>projectRoot</code> normally means the nearest <code>.git</code> ancestor of the working directory, or the working directory if none exists. Environment overrides and remote servers change actual paths.</p>
+<p>DSH accepts an immediate <code>&lt;root&gt;/&lt;folder&gt;/SKILL.md</code> bundle or a flat <code>&lt;root&gt;/&lt;name&gt;.md</code> file. Frontmatter requires a lowercase kebab-case name and a description:</p>
+<pre><code class="language-markdown">---
+name: article-review
+description: Review a technology article for clarity and unsupported claims.
+---
+
+Read the article, identify unsupported claims, and suggest concrete revisions.
+</code></pre>
+<p>Export full bundles so supporting scripts, references, and assets travel with the instructions. <strong>Allow model selection</strong> maps to the inverse of <code>disable-model-invocation</code>; <strong>Allow /manual invocation</strong> maps to <code>user-invocable</code>. These policies are saved separately from body edits. Their YAML AST update preserves the instruction body, comments, and unrelated metadata.</p>
+<p>Whole-skill disabling renames its instruction file to a disabled form. On a shared <code>.agents/skills</code> root, this can also affect other agents using that same directory. For DSH-specific copies, use a DSH root. Disabling does not remove instructions already retained in conversation history.</p>
+<h3 id="en-use-common-operations">Common operations</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Create</td>
+<td>Select <strong>New skill</strong>, choose a destination, and enter a valid name, description, and starter template.</td>
+</tr>
+<tr>
+<td>Preview instructions</td>
+<td>Select the skill to open <strong>Overview</strong>, with its instructions, source, and availability information. The details and close control stay inside the workbench content area.</td>
+</tr>
+<tr>
+<td>Set invocation policy</td>
+<td>In a local skill’s <strong>Overview</strong>, set <strong>Allow model selection</strong> and <strong>Allow /manual invocation</strong>, then select <strong>Save settings</strong>.</td>
+</tr>
+<tr>
+<td>Edit instructions</td>
+<td>Open <strong>Edit</strong>, change the instructions, then select <strong>Save changes</strong>.</td>
+</tr>
+<tr>
+<td>Edit resources</td>
+<td>In <strong>Resources</strong>, add a relative-path text resource, upload a file, select a text file to edit and save, or remove a resource. Binary files remain preserved and can be inspected after export.</td>
+</tr>
+<tr>
+<td>Local import</td>
+<td><strong>Import → Local files</strong> accepts <code>.md</code>, <code>.zip</code>, or a complete folder. Choose <strong>Import to</strong>, select <strong>Next</strong>, view the skills, and select <strong>Import</strong>.</td>
+</tr>
+<tr>
+<td>GitHub import</td>
+<td><strong>Import → GitHub</strong> accepts a concrete skill directory&#39;s <code>/tree/</code> URL or a Markdown file&#39;s <code>/blob/</code> URL, including <code>SKILL.md</code> and flat <code>.md</code> skills. Select <strong>Next</strong> to view the skill, then <strong>Import</strong>. A same-name warning appears when relevant.</td>
+</tr>
+<tr>
+<td>Source update</td>
+<td>In the imported skill&#39;s <strong>Overview</strong> source area, select <strong>Check source updates</strong>. Compare local/incoming instructions, commits, and changed resources, then explicitly apply the reviewed update.</td>
+</tr>
+<tr>
+<td>Copy</td>
+<td>Open a local skill, select <strong>Copy to location</strong>, and choose a writable root; the original is retained.</td>
+</tr>
+<tr>
+<td>Batch maintenance</td>
+<td>In <strong>Skill library</strong>, select local skills to change file enablement or export them. Hidden selections are not used for batch changes after switching scope.</td>
+</tr>
+<tr>
+<td>Recover</td>
+<td>Removing a skill retains a recovery point. Select the snapshot in <strong>History</strong> and restore; current state is backed up before replacement.</td>
+</tr>
+</tbody></table></div>
+<p>For a collection repository, paste the <strong>specific skill directory</strong> instead of its collection root; this release does not provide a repository-wide multi-skill picker. A repository URL also works when its root is itself one skill. A GitHub fetch allows at most 200 files, 2 MiB per file, and 8 MiB total file content. Public API limits and network failures are reported; retry later instead of running untrusted download scripts.</p>
+<p>Virtual skills from plugin/runtime providers expose synthesized instructions for viewing, without complete original-resource export; manage those through their provider. For local bundles, source updates replace the complete bundle and check its full hash for concurrent changes. Updates are explicit actions, with no background overwrite of imported content.</p>
+<h3 id="en-use-save-results-and-the-slash-menu">Save results and the slash menu</h3>
+<p>Earlier SDK menu caching could leave an already opened <code>/</code> menu unchanged even after a successful file save. Version 0.2.2 shows a short <strong>Saved</strong> message, with catalog and menu synchronization details available from its help control. It checks the real catalog and uses DSH&#39;s public Loader to refresh the skill menu. It dismisses an open skill menu group; reopen <code>/</code> to fetch a fresh list. This does not restart the Agent or rewrite skill instructions already loaded into chat history.</p>
+<p>Other connected, visible plugin windows check for revisions about every five seconds and follow changes. Becoming visible triggers another check. Hidden, background, or disconnected windows are not guaranteed to refresh on that schedule. File state, catalog verification, and menu refresh remain separate results; unsupported interfaces and incomplete synchronization are reported rather than treated as confirmed availability.</p>
+</section>
+<section class="doc-section" id="en-upgrade" data-key="upgrade"><h2 id="en-upgrade-4-update-roll-back-or-uninstall">4. Update, roll back, or uninstall</h2>
+<p>Install a new <code>.tgz</code> into the same profile to update the plugin:</p>
+<pre><code class="language-sh">dsh plugin --profile web add ./dsh-skill-studio-0.2.2.tgz
+</code></pre>
+<p>Desktop users install <code>dsh-skill-studio-0.2.2.tgz</code> through the same built-in installer. Follow the host&#39;s activation result and confirm the installed version.</p>
+<p>Upgrading the plugin does not migrate or delete skill directories or retained history. The history/state directory remains <code>~/.dsh/skill-studio</code>, or <code>$DSH_HOME/skill-studio</code> when <code>DSH_HOME</code> is overridden. Plugin updates are separate from updates to imported skills.</p>
+<p>To roll back, keep the earlier <code>dsh-skill-studio-0.2.1.tgz</code> and install that archive into the same profile:</p>
+<pre><code class="language-sh">dsh plugin --profile web add ./dsh-skill-studio-0.2.1.tgz
+</code></pre>
+<p>Desktop users choose the retained <code>0.2.1</code> archive in the built-in installer. Confirm the host reports <code>0.2.1</code> after activation. Rollback changes the plugin version; it does not undo skill-file edits made while using <code>0.2.2</code>. Use skill history or a full bundle export to recover content. Keep the release archives as separate files. You may also retain the older 0.1 archive.</p>
+<p>To remove the Web plugin:</p>
+<pre><code class="language-sh">dsh plugin --profile web remove dsh-skill-studio
+</code></pre>
+<p>Desktop users remove it in the installed plugins page. Removing a management plugin is not a substitute for deleting skills. Inspect actual instruction files, disabled states, and history locations before uninstalling. Use complete skill exports when moving to another machine.</p>
+</section>
+<section class="doc-section" id="en-publish" data-key="publish"><h2 id="en-publish-5-publish-for-other-users">5. Publish for other users</h2>
+<p><code>YOUR_GITHUB_USER</code> is a placeholder throughout this section. Do not advertise an example package or URL as live before publication.</p>
+<h3 id="en-publish-build-and-inspect-the-archive">Build and inspect the archive</h3>
+<p>In the source checkout:</p>
+<pre><code class="language-sh">npm install
+npm run build
+npm test
+npm pack --dry-run
+npm pack
+</code></pre>
+<p>Confirm that <code>dsh-skill-studio-0.2.2.tgz</code> contains the manifest, bundle patch, host code, browser build, locale assets, and required documentation. Install the archive into a clean DSH profile and verify startup before release.</p>
+<h3 id="en-publish-publish-to-npm">Publish to npm</h3>
+<p>Use an npm account that owns the chosen package name. If <code>dsh-skill-studio</code> is unavailable, rename it to an owned scope, such as <code>@YOUR_NPM_SCOPE/dsh-skill-studio</code>, and update module references, package checks, and the index consistently.</p>
+<p>After renaming, substitute the actual filename printed by <code>npm pack</code> for the example <code>.tgz</code> filename below.</p>
+<pre><code class="language-sh">npm login
+npm publish ./dsh-skill-studio-0.2.2.tgz --access public
+</code></pre>
+<p>Complete npm&#39;s own login or two-factor prompts. After confirming the real package is published, users can run:</p>
+<pre><code class="language-sh">dsh plugin --profile web add dsh-skill-studio@0.2.2
+</code></pre>
+<p>Desktop users enter <code>dsh-skill-studio@0.2.2</code> into its installer. These examples assume that exact package name was successfully published.</p>
+<h3 id="en-publish-publish-a-prebuilt-github-release">Publish a prebuilt GitHub release</h3>
+<p>Create a public repository, fill in its real repository/homepage metadata, and commit source, required prebuilt output, and docs. Check <code>git status</code> before adding files so test workspaces and local data do not enter the repository.</p>
+<pre><code class="language-sh">git init
+npm run build
+git add .
+git add -f lib
+git commit -m &quot;Release Skills Studio 0.2.2&quot;
+git branch -M main
+git remote add origin https://github.com/YOUR_GITHUB_USER/dsh-skill-studio.git
+git push -u origin main
+git tag v0.2.2
+git push origin v0.2.2
+</code></pre>
+<p>Create release <code>v0.2.2</code> in GitHub Releases and attach <code>dsh-skill-studio-0.2.2.tgz</code>. After replacing the username and checking that the asset exists, users can install it with:</p>
+<pre><code class="language-sh">dsh plugin --profile web add https://github.com/YOUR_GITHUB_USER/dsh-skill-studio/releases/download/v0.2.2/dsh-skill-studio-0.2.2.tgz
+</code></pre>
+<p>A Git installation is also possible when the repository includes ready-to-run output:</p>
+<pre><code class="language-sh">dsh plugin --profile web add github:YOUR_GITHUB_USER/dsh-skill-studio#v0.2.2
+</code></pre>
+<p>Avoid requiring builds during installation. If you add install-time scripts such as <code>prepare</code>, pnpm may require explicit script approval; follow the host&#39;s actual result instead of enabling all dependency scripts.</p>
+<p>This project&#39;s development ignore rules exclude <code>lib/</code>. The explicit <code>git add -f lib</code> above includes the built release output; a source-only Git commit would be missing the installable entry files.</p>
+<h3 id="en-publish-included-repository-checks">Included repository checks</h3>
+<p>The source includes <code>.github/workflows/check.yml</code>. After a push or pull request in your repository, GitHub Actions installs, tests, builds, and packs on Linux, Windows, and macOS with Node 24, retaining each platform&#39;s <code>.tgz</code> artifact. Check the actual three-platform job results before public release. A workflow file alone does not establish that those systems have already passed.</p>
+<p>This workflow does not publish to npm, create a public release, or deploy Pages. After checking CI and the artifact, use the publication steps above. If GitHub CLI is installed and authenticated, this command can create the release and attach its package:</p>
+<pre><code class="language-sh">gh release create v0.2.2 ./dsh-skill-studio-0.2.2.tgz --title &quot;Skills Studio 0.2.2&quot; --notes &quot;Skills Studio 0.2.2. See README for installation and verification.&quot;
+</code></pre>
+<p>When the release tag already exists, verify that it points at the tested source commit. Perform one real installation from the public URL after publication.</p>
+</section>
+<section class="doc-section" id="en-market" data-key="market"><h2 id="en-market-6-publish-a-custom-plugin-index">6. Publish a custom plugin index</h2>
+<p><strong>DSH ships no index source and does not require registration with an official marketplace.</strong> A custom market is a public JSON index hosted at an HTTP(S) URL.</p>
+<p>For this project, the supplied generator can produce a Git-based index after you have a real repository URL and published commit:</p>
+<pre><code class="language-sh">node scripts/generate-market.mjs --repository https://github.com/YOUR_GITHUB_USER/dsh-skill-studio --commit ACTUAL_40_CHARACTER_COMMIT_SHA --output docs/market/index.json
+</code></pre>
+<p>Replace both placeholders. Obtain the release commit with <code>git rev-parse &#39;v0.2.2^{commit}&#39;</code>. Git entries require a full 40-character commit SHA, not <code>main</code> or a tag name.</p>
+<p>A minimal npm-based index looks like:</p>
+<pre><code class="language-json">{
+  &quot;format&quot;: 1,
+  &quot;title&quot;: { &quot;en&quot;: &quot;IT咖啡馆 X 老陈聊AI Plugins&quot;, &quot;zh&quot;: &quot;IT咖啡馆 X 老陈聊AI 插件&quot; },
+  &quot;plugins&quot;: [
+    {
+      &quot;name&quot;: &quot;dsh-skill-studio&quot;,
+      &quot;title&quot;: { &quot;en&quot;: &quot;Skills Studio&quot;, &quot;zh&quot;: &quot;技能工作台&quot; },
+      &quot;author&quot;: &quot;IT咖啡馆 X 老陈聊AI&quot;,
+      &quot;versions&quot;: [
+        {
+          &quot;version&quot;: &quot;0.2.2&quot;,
+          &quot;publishTimestamp&quot;: 1793746800,
+          &quot;source&quot;: { &quot;type&quot;: &quot;npm&quot; }
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>Use the actual publication Unix timestamp and actual package name. Copy the package&#39;s real <code>engines.dsh</code> range into the version&#39;s <code>engines.dsh</code> field. Omitting a range from this minimal example does not establish universal compatibility; the host checks the package again when installing.</p>
+<p>The official repository also offers a reference generator. Put published npm package names or Git URLs into <code>plugins.txt</code>, then run this in a prepared DSH source checkout:</p>
+<pre><code class="language-sh">pnpm --filter @deepseek-ai/dsh-plugin-market-generator start --input plugins.txt --output site/index.json --title &quot;IT咖啡馆 X 老陈聊AI Plugins&quot;
+</code></pre>
+<h3 id="en-market-host-the-json-with-github-pages">Host the JSON with GitHub Pages</h3>
+<ol>
+<li><p>Save your real index at <code>docs/market/index.json</code>; keep optional icons in an adjacent <code>icons/</code> folder.</p>
+</li>
+<li><p>Commit and push.</p>
+</li>
+<li><p>In repository <strong>Settings → Pages</strong>, select <strong>Deploy from a branch</strong>, branch <code>main</code>, directory <code>/docs</code>.</p>
+</li>
+<li><p>Wait for successful deployment and check the actual URL:</p>
+<p><code>https://YOUR_GITHUB_USER.github.io/dsh-skill-studio/market/index.json</code></p>
+</li>
+<li><p>Confirm it returns 2xx UTF-8 JSON without redirects. Do not use GitHub&#39;s HTML file preview URL. <code>curl -I &quot;ACTUAL_URL&quot;</code> can inspect the response.</p>
+</li>
+</ol>
+<p>That URL is a format example, not a deployed market supplied with this delivery. Other static hosts can serve the same files over HTTPS.</p>
+<h3 id="en-market-let-users-add-the-index">Let users add the index</h3>
+<ol>
+<li>Enable <strong>Custom plugin indexes</strong> under <strong>Plugins → Experimental plugins</strong>; some versions show <strong>More</strong> first.</li>
+<li>Open <strong>Discover → Add index source</strong> and paste the verified HTTPS index URL.</li>
+<li>Search for Skills Studio / 技能工作台.</li>
+<li>Inspect the author, package, version, and source before installing and enabling it.</li>
+</ol>
+<p>Adding an index does not install every plugin in it and is not an official safety certification.</p>
+</section>
+<section class="doc-section" id="en-community" data-key="community"><h2 id="en-community-7-community-discovery">7. Community discovery</h2>
+<ul>
+<li>Add the <strong><code>dsh-plugin</code></strong> topic to the public repository, as recommended by DSH&#39;s README.</li>
+<li>Use accurate npm keywords and document actual compatibility and installation instructions.</li>
+<li>For listing in <a href="https://github.com/dshworks/awesome-dsh-plugins" target="_blank" rel="noopener noreferrer">dshworks/awesome-dsh-plugins</a>, follow its <a href="https://github.com/dshworks/awesome-dsh-plugins/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">contribution guide</a>: edit <code>data/plugins.json</code>, run <code>node scripts/validate.mjs</code> and <code>node scripts/render.mjs</code>, and submit a PR containing the required generated changes.</li>
+<li>Set <code>verifiedAgainst</code> and <code>lastVerified</code> to real checks. A <code>verified</code> entry requires evidence, such as <code>package.json#dsh.bundle</code>. Do not claim an unpublished npm name is installable.</li>
+</ul>
+<p>The community&#39;s public Discover index is <code>https://dsh.works/awesome-dsh-plugins/market/index.json</code>. Its maintainers decide admission; a submitted PR is not a completed listing.</p>
+</section>
+<section class="doc-section" id="en-troubleshoot" data-key="troubleshoot"><h2 id="en-troubleshoot-8-troubleshooting">8. Troubleshooting</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Installed but no entry</td>
+<td>Correct Desktop/Web profile, enabled state, compatibility diagnostics, and the host&#39;s reload instructions.</td>
+</tr>
+<tr>
+<td>Incompatible version</td>
+<td>Record actual host and plugin versions; GitHub master is not your installed runtime.</td>
+</tr>
+<tr>
+<td>Package not found</td>
+<td>Verify a local <code>.tgz</code> path or a genuinely published URL. npm mirrors cannot fix a missing GitHub release asset.</td>
+</tr>
+<tr>
+<td>pnpm missing</td>
+<td>Check Web CLI PATH; Desktop should use its built-in installer.</td>
+</tr>
+<tr>
+<td>File is busy or access denied when saving</td>
+<td>Brief locks receive bounded retries. If saving still fails, the error remains beside the save controls and the draft is retained. Close editors or synchronization tools that might hold the file, check write permissions, and retry; copy error details if needed.</td>
+</tr>
+<tr>
+<td>Original files kept; recovery required</td>
+<td>Open <strong>Error details</strong> for the recovery location and preserve those files. Resolve locking or access first. Do not repeatedly save or delete recovery copies; this error does not offer an ordinary save retry.</td>
+</tr>
+<tr>
+<td>File changed while editing</td>
+<td>Reload the latest file, merge your edit, then save again. The hash check prevents silent overwrite.</td>
+</tr>
+<tr>
+<td>Skill unavailable</td>
+<td>Check <strong>Workspace</strong>, <strong>Mode</strong>, diagnostics, file state, both invocation policies, and same-name overrides. The default Minimal mode does not provide local skills. Selecting another mode in the workbench does not change the session.</td>
+</tr>
+<tr>
+<td>File saved but <code>/</code> still shows the old list</td>
+<td>Open the synchronization details beside the short save result. The plugin dismisses an open skill menu group and refreshes its bridge through the public Loader; reopen <code>/</code> to fetch the new list. Check the selected view matches the actual session.</td>
+</tr>
+<tr>
+<td>Another window shows an older state</td>
+<td>Visible plugin windows check for revisions every five seconds. Return to a hidden/background window and refresh its view if needed.</td>
+</tr>
+<tr>
+<td>Disabled skill still remembered</td>
+<td>Previously loaded instructions remain in conversation history. Verify in a new conversation.</td>
+</tr>
+<tr>
+<td>GitHub import failed</td>
+<td>Check connectivity, the public repository path, and readable commit. Public GitHub API requests returned HTTP 403 in this development environment; successful live downloads have not been verified here. Private repository authentication is outside the default public import flow.</td>
+</tr>
+<tr>
+<td>Remote server cannot read a file</td>
+<td>Use its server-side path or the panel&#39;s upload interface.</td>
+</tr>
+<tr>
+<td>Read-only item cannot be edited</td>
+<td>Confirm its source and customize a writable local copy.</td>
+</tr>
+</tbody></table></div>
+<p>The project and accompanying documentation carry the joint creator credit <strong>IT咖啡馆 X 老陈聊AI</strong>. Publication commands are for maintainers to run explicitly; delivery does not automatically publish to npm, GitHub, a plugin index, or social platforms.</p>
+</section>
+<section class="doc-section" id="en-references" data-key="references"><h2 id="en-references-official-references">Official references</h2>
+<ul>
+<li><a href="https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/cli/README.md" target="_blank" rel="noopener noreferrer">CLI and profiles</a></li>
+<li><a href="https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/docs/user/guide/plugin-market.md" target="_blank" rel="noopener noreferrer">Plugin indexes</a></li>
+<li><a href="https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/apps/plugin-market-generator/README.md" target="_blank" rel="noopener noreferrer">Index generator</a></li>
+<li><a href="https://github.com/deepseek-ai/deepseek-harness/blob/fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159/packages/skill/skill-filesystem/README.md" target="_blank" rel="noopener noreferrer">Filesystem skills</a></li>
+</ul>
+</section>
+  <section class="doc-section" id="en-changes" data-key="changes"><h2>What changed in 0.2.2</h2><h3 id="en-changes-0-2-2">0.2.2</h3>
+<ul>
+<li><strong>Current mode</strong> is now the default and lists only skills actually supplied by the selected workspace and mode with at least one permitted invocation. <strong>Skill library</strong> separately retains local skill files and read-only plugin entries; its total is no longer presented as the mode&#39;s callable count.</li>
+<li><strong>Model use</strong> and <strong>/ Commands</strong> have separate counts and filters. Compare the manual list with a conversation&#39;s <code>/</code> menu. Model-only skills, entries with both policies off, and shadowed copies do not enter that list.</li>
+<li>File switches are removed from the current-mode list. Read-only plugin skills identify their provider. The library switch explicitly controls <strong>File enabled</strong>, without implying availability in the selected mode.</li>
+<li>Incomplete catalog results remain unconfirmed rather than becoming a definite zero. Source groups, filters, and counts follow the selected view; hidden selections do not carry into batch operations after a scope change.</li>
+<li>Successful creation or import opens <strong>Skill library</strong>, so a mode that cannot use the new skill does not hide it from file management.</li>
+<li>The save retries, persistent errors and drafts, mode names, import flow, complete resources, and recovery history from 0.2.1 remain available.</li>
+</ul>
+<p>Install <code>dsh-skill-studio-0.2.2.tgz</code> into the existing profile. Skill and history locations remain unchanged. Retain <code>dsh-skill-studio-0.2.1.tgz</code> and its delivery ZIP for rollback. A count such as eight in a screenshot or fixture is an observed result, not a fixed total. See the <a href="#en-verification">verification record</a> for final checks and scope.</p>
+<h3 id="en-changes-0-2-1">0.2.1</h3>
+<ul>
+<li>Save operations retry brief file locks for a bounded period and report persistent locks or write-access failures explicitly. Failed writes preserve the original; retries retain concurrent-change protection.</li>
+<li>Save errors stay beside the detail&#39;s save controls, with retry and copyable error details. The unsaved draft remains. Ordinary reads and refreshes do not clear the error; refresh failures after a successful write are described separately.</li>
+<li>DSH&#39;s <strong>Workspace</strong> and <strong>Mode</strong> terminology replaces custom labels. Built-in modes show their localized names and custom names remain unchanged. The sidebar and destination controls identify the actual workspace.</li>
+<li>Mode support is explained directly: DSH&#39;s default Minimal mode does not provide local skills, rather than describing a skill as “not in the selected preset.”</li>
+<li>Success uses short messages such as <strong>Saved</strong>, with catalog/menu synchronization details available through a help control.</li>
+<li>Import uses <strong>Import skills → Import to → Next → Import</strong> and “Add skills from GitHub or local files.” Actual name conflicts receive specific warnings; long paths are available through <strong>Save location</strong> with a copy action.</li>
+</ul>
+<p>Install <code>dsh-skill-studio-0.2.1.tgz</code> into the existing profile. Skill and history locations remain unchanged. Retain <code>dsh-skill-studio-0.2.0.tgz</code> and its original delivery ZIP for rollback; 0.2.1 is a separate delivery.</p>
+<p>See the <a href="#en-verification">verification record</a> for final counts and scope. Reproducible lock-failure tests are not a native Windows/macOS acceptance test. Live public GitHub downloading and public distribution retain their own verification status.</p>
+<h3 id="en-changes-0-2-0">0.2.0</h3>
+<ul>
+<li>A compact list is now the default. Details stay within the workspace content area and open on <strong>Overview</strong>; instruction changes use <strong>Edit</strong>. Detail controls no longer occupy DSH&#39;s title bar.</li>
+<li>Target workspace and Agent preset selectors support a global-only view. These choices change the inspection view without changing a real Session&#39;s directory or preset, or creating an Agent.</li>
+<li>File enablement and availability in the selected preset are separate. Independent invocation settings are saved through a YAML AST, preserving the body, comments, and other metadata.</li>
+<li>Mutations check the actual skill catalog and report catalog/menu synchronization separately. A saved file does not prove that every preset provides the skill.</li>
+<li>A public Loader lifecycle bridge remounts only the official <code>ui-skill</code> menu integration to refresh the SDK&#39;s session-cached skill list. The current skill menu group is withdrawn first; reopen the menu to obtain its fresh list. Other connected, visible windows check the revision about every five seconds and when they become visible.</li>
+<li>Clickable question-mark help replaces persistent technical explanations; internal priority numbers are removed from the list. Resource uploads join complete bundle exports, source-update previews, hash protection, and recoverable history.</li>
+</ul>
+<p>Install <code>dsh-skill-studio-0.2.0.tgz</code> into the existing profile. Skill locations and <code>$DSH_HOME/skill-studio</code> history remain unchanged. Retain the <code>0.1.0</code> package and original delivery ZIP for rollback.</p>
+<p>Menu refresh does not restart Agents or rewrite instructions already loaded into conversation history. Five-second synchronization is not guaranteed for hidden or disconnected windows. Hosts without the required public interface report their synchronization status. See the version-specific <a href="#en-verification">verification record</a>: native Windows/macOS checks remain unperformed, live GitHub downloads returned HTTP 403 in this environment, and public package/index addresses must be published before they work.</p>
+<h3 id="en-changes-0-1-0">0.1.0</h3>
+<p>The initial release provided bilingual local skill management, complete bundle import/export, pinned GitHub imports and update previews, resource management, recovery history, and hash-based overwrite protection. Its delivery package remains available as a rollback artifact.</p>
+</section>
+  <section class="doc-section" id="en-verification" data-key="verification"><h2>Final verification record</h2><p>2026-11-05 · <strong>IT咖啡馆 X 老陈聊AI</strong>.</p>
+<h3 id="en-verification-environment-and-scope">Environment and scope</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Record</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Environment</td>
+<td>Linux, Node.js <code>24.22.1</code></td>
+</tr>
+<tr>
+<td>Plugin</td>
+<td><code>dsh-skill-studio@0.2.2</code></td>
+</tr>
+<tr>
+<td>Primary host</td>
+<td>DSH <code>0.2.2-rc.1</code>; source baseline <code>fcc0ad462172522aaf5c93a7b2e01f6b9f0b0159</code></td>
+</tr>
+<tr>
+<td>Complete automated run</td>
+<td><strong>116 passed, 0 failed, 1 conditionally skipped</strong>, 117 total</td>
+</tr>
+<tr>
+<td>SDK contract probes</td>
+<td>Repeated successfully in this round against actual DSH <code>0.2.2-rc.1</code> and a separate <code>0.2.1-rc.5</code> installation</td>
+</tr>
+<tr>
+<td>Actual browser</td>
+<td>DSH <code>0.2.2-rc.1</code> Web, an isolated profile and synthetic skills; the real chat <code>/</code> menu was compared with the plugin list</td>
+</tr>
+<tr>
+<td>Installation</td>
+<td>A local <code>.tgz</code> installed successfully in a new profile with 9 runtime dependencies; an additional read-only provider fixture was installed solely for testing</td>
+</tr>
+<tr>
+<td>Platform limits</td>
+<td>No native Windows or macOS acceptance test. Linux and fault-injection results are not described as native Windows results</td>
+</tr>
+</tbody></table></div>
+<p>The full automated browser regression was conditionally skipped because of the execution environment. The real-browser operations below were performed separately. No model turn was run and no skills on the user&#39;s computer were modified.</p>
+<h3 id="en-verification-what-this-fix-must-establish">What this fix must establish</h3>
+<p>The library total, file switches, mode catalog, and slash candidates represent different sets. The current-mode list comes from the winning entries in the actual Registry for the selected workspace and mode. An entry must allow at least one invocation type to count as available.</p>
+<ul>
+<li><code>catalog.availableIds</code>: actual winning entries allowing automatic model use or manual invocation.</li>
+<li><code>automaticIds</code> / <code>manualIds</code>: the two invocation subsets. The latter uses the same <code>isUserInvocable</code> condition as the official SessionSkillCatalog.</li>
+<li><code>registeredIds</code>: also includes catalog entries with both invocation policies disabled; those are not available for invocation.</li>
+<li>An incomplete catalog, an unconfirmed mode, or a saved file policy still awaiting discovery produces <code>complete=false</code> and <code>null</code> totals. The UI shows an em dash and only confirmed entries, rather than a definite zero.</li>
+</ul>
+<p>The library retains scanned local files and read-only plugin entries supplied in the selected mode. A library total of 40 therefore means neither 40 physical files nor 40 skills available in that mode.</p>
+<h3 id="en-verification-automated-tests">Automated tests</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Passed</th>
+<th>Main coverage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>manager</td>
+<td>26</td>
+<td>Atomic writes, complete resources, concurrent-change hashes, YAML and invocation policy, file enablement, sources, copying, and recovery</td>
+</tr>
+<tr>
+<td>file-operations</td>
+<td>11</td>
+<td>Temporary and persistent locks, original-file preservation, external changes during waits, cleanup and rollback failures, restart-safe staging, and cleanup budgets</td>
+</tr>
+<tr>
+<td>archive</td>
+<td>12</td>
+<td>ZIP, binary files, CRC, size limits, path boundaries, and executable modes</td>
+</tr>
+<tr>
+<td>github</td>
+<td>13</td>
+<td>Pinned commits, resource hashes, URLs, rate limits and network errors, and unsafe tree structures</td>
+</tr>
+<tr>
+<td>context</td>
+<td>18</td>
+<td>Actual working directory, Git roots, workspace isolation, mode leases, rc.5 compatibility, and unknown states</td>
+</tr>
+<tr>
+<td>host</td>
+<td>11</td>
+<td>Owner access, Typert JSON, error details, batch operations, and mode revisions</td>
+</tr>
+<tr>
+<td>host-runtime</td>
+<td>5</td>
+<td>Actual Registry/Scope/filesystem watcher; a 40-entry library versus eight Minimal-mode entries; Standard-mode name winners; official manual filtering; both-policies-off entries; incomplete providers; policy discovery waits</td>
+</tr>
+<tr>
+<td>catalog-sync</td>
+<td>3</td>
+<td>Actual official ui-skill, InputTriggerService, Loader, and catalog-cache updates in retained sessions</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>1</td>
+<td>Discovery, loading, enablement, deletion, and resource recovery through the actual provider</td>
+</tr>
+<tr>
+<td>release</td>
+<td>1</td>
+<td>Index generation and official format validation</td>
+</tr>
+<tr>
+<td>ui</td>
+<td>3</td>
+<td>Chinese/English dictionaries, build and render, container-bound details, help, and policy persistence</td>
+</tr>
+<tr>
+<td>ui-interaction</td>
+<td>7</td>
+<td>Actual React interactions: persistent drafts and errors, refresh and locale changes, retries, recovery errors, partial import failures, mode names, and live titles</td>
+</tr>
+<tr>
+<td>ui-mode</td>
+<td>5</td>
+<td>Actual React interactions: default current-mode view, separate 8/40 totals, manual filtering, no read-only switches, unknown counts, hidden selection, and navigation with unsaved edits</td>
+</tr>
+</tbody></table></div>
+<p>The same-name tests keep two physical copies in the library but count only the real winning copy in the mode list. Automatic and manual lists are compared entry by entry with the actual Registry&#39;s official filtering results; matching counts alone are not treated as proof.</p>
+<p>Reproduce with:</p>
+<pre><code class="language-sh">npm ci
+npm test
+npm run build
+node scripts/check-runtime-contract.mjs
+</code></pre>
+<p>See <a href="#en-rc5">VERIFICATION-rc5.md</a> for the rc.5 probe and separate installation procedure. The new catalog-count runtime integration primarily runs on rc.1; this is not a claim that both versions received identical browser acceptance tests on every platform.</p>
+<h3 id="en-verification-real-browser-acceptance">Real-browser acceptance</h3>
+<p>A test-only provider supplied eight read-only skills alongside 31 personal skills and one workspace skill, giving a library total of 40. The fixture is excluded from the release package and the plugin does not hard-code these totals.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Observed result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code> menu in a Minimal-mode session</td>
+<td>The actual chat menu listed eight read-only fixture skills</td>
+</tr>
+<tr>
+<td>Open Skills Studio</td>
+<td><strong>Current mode</strong> was selected by default and showed the same eight entries; their names exactly matched the preceding menu, entry by entry</td>
+</tr>
+<tr>
+<td>Sources and controls</td>
+<td>Only the eight plugin-supplied skills were shown. The 31 personal and one workspace skill were not counted as available in this mode. Read-only rows showed <strong>Provided by plugin</strong>, without blue switches</td>
+</tr>
+<tr>
+<td>Open Skill library</td>
+<td>The merged inventory retained 40 entries. Only the 32 local skills had file switches; the eight read-only entries had none</td>
+</tr>
+<tr>
+<td>Inspect Standard mode</td>
+<td>Names in this browser fixture were unique. The catalog registered 40 entries, one with both policies off. Available: 39; automatic: 38; manual: 38</td>
+</tr>
+<tr>
+<td>Select <strong>/ Commands</strong></td>
+<td>The automatic-only skill was absent, the manual-only skill remained, and the both-policies-off skill was absent. Equal totals were not substituted for equal sets</td>
+</tr>
+<tr>
+<td>Build used</td>
+<td>The browser&#39;s client, host, manager, and file-operation modules matched the final build byte for byte</td>
+</tr>
+</tbody></table></div>
+<p>The actual-runtime automated tests use a separate same-name-shadowing fixture. Its totals differ from the browser fixture with unique names because the test conditions differ, not because modes have fixed skill counts.</p>
+<p>The browser save-failure/draft/retry flow was verified in 0.2.1. This round reran the relevant actual React and filesystem regressions; it does not present every prior browser operation as clicked again in this release. Earlier real GitHub public-network downloads were limited by this environment&#39;s HTTP 403 response. Protocol tests do not establish successful external end-to-end downloading.</p>
+<h3 id="en-verification-usage-limits">Usage limits</h3>
+<ul>
+<li><strong>Available in mode</strong> means the current catalog permits invocation. It does not prove successful execution or that the full instructions have entered the model context.</li>
+<li>The <code>/</code> menu shows only manually invocable entries. An automatic-only skill can be available in the mode without appearing in that menu.</li>
+<li>The workbench&#39;s mode selection changes inspection scope, not the actual session. Compare using the same workspace and mode, and reopen the chat menu.</li>
+<li>The library&#39;s file switch acts on the file and can affect other modes or agents reading it. It does not force a missing provider into the selected mode.</li>
+<li>Disabling a skill does not remove instructions already read into history. Read-only plugin skills remain managed by their provider.</li>
+<li>Temporary file locks still use bounded retries and atomic replacement. Persistent failures retain the draft and a clear error. Draft recovery after browser closure or a crash is not promised.</li>
+<li>Other connected, visible windows check for changes about every five seconds. Hidden or disconnected windows are not guaranteed that interval.</li>
+<li>npm, GitHub Release, and marketplace indexes have not been automatically published. The 0.2.1 delivery remains available; the new release is separate.</li>
+</ul>
+</section>
+  <section class="doc-section" id="en-rc5" data-key="rc5"><h2>rc.5 compatibility check</h2><p>2026-11-05, Linux, Node.js <code>24.22.1</code>. A separate directory was used to install and run DSH <code>0.2.1-rc.5</code>, with Cordis <code>4.0.5</code> and Loader <code>1.0.6</code>; the same checks were also performed against the project&#39;s DSH <code>0.2.2-rc.1</code> development dependency.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Actual AgentPresetRegistry <code>acquireScope</code> and <code>inspectCompositions</code></td>
+<td>Passed; a lease retains a withdrawn preset revision, which is removed after asynchronous release; repeated release is safe</td>
+</tr>
+<tr>
+<td>Actual Session, Projection, and WorkingDirectory</td>
+<td>Passed; the committed working directory takes precedence over the directory recorded at creation, while creation metadata remains unchanged</td>
+</tr>
+<tr>
+<td>A cold session whose preset was switched after creation</td>
+<td>Passed; reads the last committed <code>minimal</code> instead of incorrectly using the <code>standard</code> selected at creation or as the deployment default</td>
+</tr>
+<tr>
+<td>Actual Loader <code>entries()</code> and <code>fiber.restart()</code></td>
+<td>Passed; the target instance is remounted with its enabled state and configuration unchanged</td>
+</tr>
+<tr>
+<td>Actual rc.5 ui-skill / InputTriggerService integrated with the real filesystem provider</td>
+<td>5 tests passed in a temporary isolated installation, covering refresh of an old session&#39;s cache, waiting for policy changes to take effect, same-name fallback after disabling, and presets without a filesystem provider</td>
+</tr>
+</tbody></table></div>
+<p>rc.5 does not yet provide <code>agentPresets.presetForSession()</code>. Only when that method is absent, the plugin uses rc.5&#39;s public <code>sessionProjections.stateOf(session, &#39;agentPreset&#39;)</code> to read the committed state. <code>0.2.2-rc.1</code> uses the dedicated read method first, avoiding the old interface. The rc.5 minimum supported version is therefore retained.</p>
+<p>The source package includes <code>scripts/check-runtime-contract.mjs</code>. It actually loads the services listed above from the specified DSH installation. Adjacent Agent, file-execution, and prompt-assembly capabilities use minimal stubs because the checks only read state; they do not create an Agent or run session turns. This script does not replace full browser acceptance testing or testing on native Windows / macOS machines.</p>
+<p>Run from the source directory to check the project&#39;s development dependency by default:</p>
+<pre><code class="language-sh">npm ci
+node scripts/check-runtime-contract.mjs
+</code></pre>
+<p>Install rc.5 separately and recheck it:</p>
+<pre><code class="language-sh">DSH_RC5_TEST_DIR=&quot;$(mktemp -d)&quot;
+npm install --prefix &quot;$DSH_RC5_TEST_DIR&quot; --ignore-scripts --no-audit --no-fund @deepseek-ai/dsh@0.2.1-rc.5
+node scripts/check-runtime-contract.mjs --runtime-package &quot;$DSH_RC5_TEST_DIR/node_modules/@deepseek-ai/dsh/package.json&quot;
+</code></pre>
+<p>You can also point <code>--runtime-package</code> to the absolute <code>package.json</code> path of an existing DSH installation. Success prints one line with the version and passing result; failure exits with code <code>1</code>. Temporary state created by the checks is cleaned up automatically. The specified DSH installation is not modified.</p>
+</section>
+  <footer class="article-footer"><p>Jointly created by IT咖啡馆 X 老陈聊AI · Original documentation and joint branding carry both creators’ credit · Third-party references retain their attribution.</p><a href="#top">↑ Back to top</a></footer>
+  </article>
+</main></div>
+<script type="application/json" id="guide-provenance">{"version":"0.2.2","updated":"2026-11-05","sources":{"docs/INSTALL.zh.md":"2f53ee78a5902f25791014ad44d2566cc155d441d7511ac4314830668519fa87","docs/INSTALL.en.md":"a32a6f6811f84be8d03d593f75e32aca89ecd71ea4790667d4fa2f2d635b63a2","CHANGELOG.md":"daee97ab68c6072eeabe501e0be8ae55077de85c7429c40b4a463d8fd6d5491e","docs/VERIFICATION.md":"e20972eddb6c1754f097795951b28e084a93d632d1bd955baa5e2cb77f296e0e","docs/VERIFICATION-rc5.md":"ec3eb36357fa2f180d0ff52155e17c03daa3b0e6bf339422b35b04d37feaee7d"}}</script>
+<script>
+(() => {
+  const copyLabels = {"zh":{"copy":"复制","copied":"已复制","fail":"请选择并复制"},"en":{"copy":"Copy","copied":"Copied","fail":"Select and copy"}};
+  let language = 'zh';
+  let currentKey = 'install';
+  let observer;
+  const select = (query, root = document) => [...root.querySelectorAll(query)];
+  function markCurrent(key) {
+    currentKey = key;
+    select('[data-nav-key]').forEach(link => key === link.dataset.navKey ? link.setAttribute('aria-current', 'location') : link.removeAttribute('aria-current'));
+  }
+  function watchSections() {
+    observer?.disconnect();
+    if (!('IntersectionObserver' in window)) return;
+    observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (visible[0]) markCurrent(visible[0].target.dataset.key);
+    }, { rootMargin: '-90px 0px -65% 0px', threshold: 0 });
+    select('[data-content-lang="' + language + '"] .doc-section').forEach(section => observer.observe(section));
+  }
+  function setLanguage(next, move = false) {
+    if (!['zh', 'en'].includes(next)) next = 'zh';
+    language = next;
+    document.documentElement.lang = next === 'zh' ? 'zh-CN' : 'en';
+    document.body.dataset.activeLang = next;
+    select('[data-content-lang]').forEach(item => { item.hidden = item.dataset.contentLang !== next; });
+    select('[data-nav-lang]').forEach(item => { item.hidden = item.dataset.navLang !== next; });
+    select('[data-ui-lang]').forEach(item => { item.hidden = item.dataset.uiLang !== next; });
+    select('[data-set-lang]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.setLang === next)));
+    select('[data-jump]').forEach(link => { link.href = '#' + next + '-' + link.dataset.jump; });
+    select('.code-copy').forEach(button => { button.textContent = copyLabels[next].copy; });
+    try { localStorage.setItem('skills-studio-guide-language', next); } catch {}
+    watchSections();
+    if (move) {
+      const target = document.getElementById(next + '-' + currentKey);
+      if (target) { history.replaceState(null, '', '#' + target.id); target.scrollIntoView({ behavior: 'auto', block: 'start' }); }
+    }
+  }
+  select('[data-set-lang]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.setLang, window.scrollY > 200)));
+  select('[data-nav-key]').forEach(link => link.addEventListener('click', () => markCurrent(link.dataset.navKey)));
+  select('pre').forEach(pre => {
+    const code = pre.querySelector('code');
+    if (!code) return;
+    const frame = document.createElement('div'); frame.className = 'code-frame';
+    const bar = document.createElement('div'); bar.className = 'code-bar';
+    const label = document.createElement('span'); label.textContent = (code.className.match(/language-([^ ]+)/) || [])[1] || 'code';
+    const button = document.createElement('button'); button.type = 'button'; button.className = 'code-copy'; button.textContent = copyLabels[language].copy;
+    button.addEventListener('click', async () => {
+      let success = false;
+      try { await navigator.clipboard.writeText(code.textContent); success = true; } catch {
+        const textarea = document.createElement('textarea'); textarea.value = code.textContent;
+        textarea.style.cssText = 'position:fixed;left:-9999px;top:0'; document.body.append(textarea); textarea.select();
+        try { success = document.execCommand('copy'); } catch {} textarea.remove();
+      }
+      button.textContent = success ? copyLabels[language].copied : copyLabels[language].fail;
+      window.setTimeout(() => { button.textContent = copyLabels[language].copy; }, 1500);
+    });
+    pre.before(frame); bar.append(label, button); frame.append(bar, pre);
+  });
+  document.getElementById('print-guide').addEventListener('click', () => window.print());
+  function useHash() {
+    const match = location.hash.match(/^#(zh|en)-([a-z0-9-]+)/);
+    if (!match) return false;
+    const key = match[2].split('-')[0];
+    if (["host","install","use","upgrade","publish","market","community","troubleshoot","references","changes","verification","rc5"].includes(key)) currentKey = key;
+    if (language !== match[1]) setLanguage(match[1]);
+    return true;
+  }
+  if (!useHash()) { let saved; try { saved = localStorage.getItem('skills-studio-guide-language'); } catch {} setLanguage(saved || 'zh'); }
+  else setLanguage(language);
+  window.addEventListener('hashchange', useHash);
+})();
+</script></body></html>

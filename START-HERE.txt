@@ -1,0 +1,25 @@
+技能工作台 / Skills Studio 0.2.2
+IT咖啡馆 X 老陈聊AI
+
+此次修复：
+默认“当前模式”仅显示该工作区、模式真正允许调用的技能；“技能库”单独管理全部扫描文件与只读插件条目。
+“文件启用”不等于“所选模式可用”。插件只读技能不再显示蓝色开关。
+模型自动使用和 / 手动调用分别统计并可点选筛选；只有手动调用名单用于对照聊天 / 菜单。
+极简模式不再把个人和工作区文件启用数量冒充该模式的可用数量；数字来自真实目录，不硬编码为8。
+
+安装 / 从0.2.1升级：
+1. 打开 Skills-Studio-Guide-v0.2.2.html，选择中文或English。
+2. 安装 dsh-skill-studio-0.2.2.tgz。外层ZIP是交付包，不能直接安装。
+3. DSH Desktop：插件 → 更多 → 安装第三方插件，输入tgz的本机绝对路径，按宿主提示启用/重载。
+4. DSH Web：在tgz所在目录运行：
+   dsh plugin --profile web add ./dsh-skill-studio-0.2.2.tgz
+   PowerShell使用 .\dsh-skill-studio-0.2.2.tgz
+5. 安装到原profile，保留0.2.1包用于回退；技能和历史目录保持原位置。
+
+source/ 包含完整源码、预构建lib、中英文档与测试，无node_modules、用户技能或测试专用提供方安装包。
+116项测试通过，1项完整浏览器自动测试条件跳过；另在真实DSH浏览器验收40项技能库/极简8项与同一会话slash名单逐项一致。
+上述数字是隔离验收夹具的数据，不是对所有用户安装的固定数量承诺。Windows/macOS未真机验收，具体范围见source/docs/VERIFICATION.md。
+发布npm、GitHub Release和自建索引的方法见手册；公共地址尚未自动发布。
+FILES.sha256用于核对交付完整性。
+
+English: open the HTML guide and choose English for complete installation, upgrade, rollback and publishing instructions.
